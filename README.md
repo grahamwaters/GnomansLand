@@ -85,7 +85,7 @@ Feel free to share this project on Twitter!
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]]
 
 This project started as a simple exercise in the use of pygame and reinforcement agents and grew into a fascinatingly organic (theoretically open-world) mixture of minecraft, age of empires, fallout shelter, and NetLogo. We are building a semi-open world virtual wilderness for our Gnomes. They live in a post-apocolypic survival society where they have to hunt and gather to stay alive.
 
@@ -102,11 +102,17 @@ At the very least we are building a virtual space where Gnomes live and interact
 
 
 
-### Built With
+### Built With (Prerequisites)
 
 The primary tools used for development in this project are python, scikit-learn, pandas, matplotlib, and some others.
 
 * [Python3](https://www.python.org/download/releases/3.0/)
+* PyGame
+* Scikit-Learn
+* Pandas
+* Matplotlib
+* (potentially Unity)
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -117,12 +123,9 @@ The primary tools used for development in this project are python, scikit-learn,
 
 To get started setting up your project locally follow these simple steps.
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* pandas
+If you don't already have the prerequisites installed and ready to go then use pip to install them in a new conda environment.
   ```sh
-  pip install pandas
+  pip install pandas etc...
   ```
 
 ### Installation
@@ -130,13 +133,13 @@ This is an example of how to list things you need to use the software and how to
 _Below you will find instructions on how you can install and set up your app._
 
 1. Clone the repo
-   ```sh
-   git clone https://github.com/grahamwaters/GnomansLand
-   ```
+```sh
+    git clone https://github.com/grahamwaters/GnomansLand
+```
 2. Install pip packages
-   ```sh
-   pip install ...
-   ```
+```sh
+    pip install ...
+```
 
 
 
@@ -170,7 +173,16 @@ See the [open issues](https://github.com/grahamwaters/GnomansLand/issues) for a 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Observation Space Specs
 
+- [ ] Generate an isometric tilemap for the world at the moment of creation.
+
+![isometric map][iso1]
+As you can see in the map above, there are multiple features (sprites) that have spawned on this map. These features will be variant. They could be animals, plants, and even geographic features.
+![isometric map][iso2]
+In this map you can see features that would have to be created by an agent. Paths would be gnome-made. Now, what would be ideal is if we can get our map so well designed and streamlined that it can look like the image below.
+![isometric map][iso_goal]
+This is the goal, and the dream of this project. It may require Unity eventually.
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -243,3 +255,6 @@ Use this space to list resources you find helpful and would like to give credit 
 
 [linkedin-url]: https://linkedin.com/in/grahamwaters01
 [product-screenshot]: images/screenshot.png
+[iso1]: images/example_isometric_scene.png
+[iso2]: images/example_isometricscene2.png
+[iso_goal]: images/goal_visual_iso.jpg
