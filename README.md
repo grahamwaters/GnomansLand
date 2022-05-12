@@ -37,8 +37,10 @@
 
   <h3 align="center">GnomansLand</h3>
 
+  <h4 alight="center">(by Graham Waters)</h4>
+
   <p align="center">
-    A simulation God-Mode Game with free will and reinforcement learning!
+    The simulated world where gnomes rule and thrive while avoiding the perils of a dangerous planet.
     <br />
     <a href="https://github.com/grahamwaters/GnomansLand"><strong>Explore the docs »</strong></a>
     <br />
@@ -48,7 +50,7 @@
   </p>
 </div>
 
-Feel free to share this repo by Tweeting it!
+Feel free to share this project on Twitter!
 
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Get%20over%20170%20free%20design%20blocks%20based%20on%20Bootstrap%204&url=https://froala.com/design-blocks&via=froala&hashtags=bootstrap,design,templates,blocks,developers)
 
