@@ -23,6 +23,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
+
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
@@ -37,7 +38,7 @@
   <h3 align="center">GnomansLand</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    A simulation God-Mode Game with free will and reinforcement learning!
     <br />
     <a href="https://github.com/grahamwaters/GnomansLand"><strong>Explore the docs »</strong></a>
     <br />
@@ -87,7 +88,7 @@ Feel free to share this repo by Tweeting it!
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-This project is for fun :smile:. We are building a semi-open world virtual wilderness for our Gnomes. They live in a post-apocolypic survival society where they have to hunt and gather to stay alive.
+This project started as a simple exercise in the use of pygame and reinforcement agents and grew into a fascinatingly organic (theoretically open-world) mixture of minecraft, age of empires, fallout shelter, and NetLogo. We are building a semi-open world virtual wilderness for our Gnomes. They live in a post-apocolypic survival society where they have to hunt and gather to stay alive.
 
 There are many Interesting subtasks within this project:
 * (Keeping it PG) Integration of Gnomes having children, resulting in attribute inheritence.
@@ -240,5 +241,6 @@ Use this space to list resources you find helpful and would like to give credit 
 [license-shield]: https://img.shields.io/github/license/grahamwaters/GnomansLand.svg?style=for-the-badge
 [license-url]: https://github.com/grahamwaters/GnomansLand/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+
 [linkedin-url]: https://linkedin.com/in/grahamwaters01
 [product-screenshot]: images/screenshot.png
