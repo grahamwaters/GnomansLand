@@ -1,4 +1,4 @@
-# The Story line of the game:
+# The Storyline of the game:
  A long series of short snippets that describe random things that the Agent (now referred to as the character Greg) encounters, thinks about, or does in the world.
 
 ## Chapter 1 - Neo Man, the coming rain
