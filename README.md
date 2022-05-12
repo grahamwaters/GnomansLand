@@ -42,9 +42,6 @@
     <br />
     <a href="https://github.com/grahamwaters/GnomansLand"><strong>Explore the docs »</strong></a>
     <br />
-    <br />
-    <a href="https://github.com/grahamwaters/GnomansLand">View Demo</a>
-    ·
     <a href="https://github.com/grahamwaters/GnomansLand/issues">Report Bug</a>
     ·
     <a href="https://github.com/grahamwaters/GnomansLand/issues">Request Feature</a>
@@ -60,7 +57,7 @@ Feel free to share this repo by Tweeting it!
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#about-the-project">About the project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
