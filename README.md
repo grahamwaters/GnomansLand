@@ -154,10 +154,10 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 
 <!-- ROADMAP -->
-## Development Roadmap
+## Our Development Roadmap
 
-- [x] Create the environment for the project.
-- [x] Create Gnome Classes with personality traits and physical attributes.
+- [ ] Create the observation space (environment) for the project.
+- [ ] Create Gnome Classes with personality traits and physical attributes.
 - [ ] Place the Gnome in the observation space.
 - [ ] Define a Gnome Abilities Class to denote all possible actions that the agent can take within the observation space.
 - [ ] Use reinforcement learning to generate policies for the gnome that allow it to survive.
