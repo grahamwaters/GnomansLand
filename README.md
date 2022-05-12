@@ -178,10 +178,15 @@ See the [open issues](https://github.com/grahamwaters/GnomansLand/issues) for a 
 - [ ] Generate an isometric tilemap for the world at the moment of creation.
 
 ![isometric map][iso1]
+
 As you can see in the map above, there are multiple features (sprites) that have spawned on this map. These features will be variant. They could be animals, plants, and even geographic features.
+
 ![isometric map][iso2]
+
 In this map you can see features that would have to be created by an agent. Paths would be gnome-made. Now, what would be ideal is if we can get our map so well designed and streamlined that it can look like the image below.
+
 ![isometric map][iso_goal]
+
 This is the goal, and the dream of this project. It may require Unity eventually.
 
 <!-- CONTRIBUTING -->
