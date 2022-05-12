@@ -102,7 +102,7 @@ At the very least we are building a virtual space where Gnomes live and interact
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+The primary tools used for development in this project are python, scikit-learn, pandas, matplotlib, and some others.
 
 * [Python3](https://www.python.org/download/releases/3.0/)
 
@@ -154,15 +154,15 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 
 <!-- ROADMAP -->
-## Roadmap
+## Development Roadmap
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
+- [x] Create the environment for the project.
+- [x] Create Gnome Classes with personality traits and physical attributes.
+- [ ] Place the Gnome in the observation space.
+- [ ] Define a Gnome Abilities Class to denote all possible actions that the agent can take within the observation space.
+- [ ] Use reinforcement learning to generate policies for the gnome that allow it to survive.
+    - [ ] Gather Food
+    - [ ] Avoid Danger
 
 See the [open issues](https://github.com/grahamwaters/GnomansLand/issues) for a full list of proposed features (and known issues).
 
@@ -176,13 +176,15 @@ See the [open issues](https://github.com/grahamwaters/GnomansLand/issues) for a 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+Don't forget to give the project a star! Thanks again! Welcome to your Gnome away from home.
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+4. Before pushing your commits go ahead and run `black` and `flake8` to eliminate any merge issues before they happen. This ensures your work is more likely to be merged into the main branch.
+5. Push to the Branch (`git push origin feature/AmazingFeature`)
+6. Open a Pull Request
+7. Wait for an admin to approve your changes and merge them into the main branch.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
