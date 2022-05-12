@@ -20,7 +20,7 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
+[![Issues][issues-shield]][[issues-url](https://github.com/grahamwaters/GnomansLand/issues)]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
