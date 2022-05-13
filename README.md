@@ -197,7 +197,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 Don't forget to give the project a star! Thanks again! Welcome to your Gnome away from home.
 
 1. Fork the Project
-2. clone the repository to edit it locally on your computer: `git clone https://github.com/grahamwaters/GnomansLand.git'
+2. clone the repository to edit it locally on your computer: `git clone https://github.com/grahamwaters/GnomansLand.git`
 3. `cd` into the repository folder: `cd GnomansLand`
 4. Create a conda environment named GnomansLand: `conda env create -n GnomansLand --file gnomansland_contributor.yml`
 5. Activate the environment: `conda activate GnomansLand`
