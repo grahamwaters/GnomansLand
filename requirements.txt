@@ -1,0 +1,22 @@
+attrs @ file:///home/conda/feedstock_root/build_artifacts/attrs_1640799537051/work
+black @ file:///home/conda/feedstock_root/build_artifacts/black-recipe_1648499330704/work
+click @ file:///Users/runner/miniforge3/conda-bld/click_1651215220522/work
+dataclasses @ file:///home/conda/feedstock_root/build_artifacts/dataclasses_1628958434797/work
+flake8 @ file:///home/conda/feedstock_root/build_artifacts/flake8_1646781084538/work
+importlib-metadata @ file:///Users/runner/miniforge3/conda-bld/importlib-metadata_1648728334687/work
+iniconfig @ file:///home/conda/feedstock_root/build_artifacts/iniconfig_1603384189793/work
+mccabe==0.6.1
+mypy-extensions @ file:///Users/runner/miniforge3/conda-bld/mypy_extensions_1649013374271/work
+packaging @ file:///home/conda/feedstock_root/build_artifacts/packaging_1637239678211/work
+pathspec @ file:///home/conda/feedstock_root/build_artifacts/pathspec_1626613672358/work
+platformdirs @ file:///home/conda/feedstock_root/build_artifacts/platformdirs_1645298319244/work
+pluggy @ file:///Users/runner/miniforge3/conda-bld/pluggy_1648772648143/work
+py @ file:///home/conda/feedstock_root/build_artifacts/py_1636301881863/work
+pycodestyle @ file:///home/conda/feedstock_root/build_artifacts/pycodestyle_1633982426610/work
+pyflakes @ file:///home/conda/feedstock_root/build_artifacts/pyflakes_1633634815271/work
+pyparsing @ file:///home/conda/feedstock_root/build_artifacts/pyparsing_1652235407899/work
+pytest==7.1.2
+tomli @ file:///home/conda/feedstock_root/build_artifacts/tomli_1644342247877/work
+typed-ast @ file:///Users/runner/miniforge3/conda-bld/typed-ast_1650218826575/work
+typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/typing_extensions_1650370875435/work
+zipp @ file:///home/conda/feedstock_root/build_artifacts/zipp_1649012893348/work
