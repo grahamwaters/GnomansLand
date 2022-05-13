@@ -9,3 +9,6 @@ dependencies:
   - flake8
   - gym
   - pygame
+  - scikit-learn
+  - pandas
+  - matplotlib
