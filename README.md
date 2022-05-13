@@ -233,10 +233,7 @@ If you have questions or concerns about the project, or just want to chat about 
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-
+* https://k3no.medium.com/isometric-grids-in-python-40c0fad54552
 * [Img Shields](https://shields.io)
 * [Read Me Template](https://github.com/othneildrew/Best-README-Template)
 
