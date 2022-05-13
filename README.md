@@ -197,12 +197,20 @@ If you have a suggestion that would make this better, please fork the repo and c
 Don't forget to give the project a star! Thanks again! Welcome to your Gnome away from home.
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Before pushing your commits go ahead and run `black` and `flake8` to eliminate any merge issues before they happen. This ensures your work is more likely to be merged into the main branch.
-5. Push to the Branch (`git push origin feature/AmazingFeature`)
-6. Open a Pull Request
-7. Wait for an admin to approve your changes and merge them into the main branch.
+2. clone the repository to edit it locally on your computer: `git clone https://github.com/grahamwaters/GnomansLand.git'
+3. `cd` into the repository folder: `cd GnomansLand`
+4. Create a conda environment named GnomansLand: `conda env create -n GnomansLand --file gnomansland_contributor.yml`
+5. Activate the environment: `conda activate GnomansLand`
+   1. You should see `(GnomansLand)` to the left of your terminal prompt now.
+6. If you like using the terminal then you could create your Feature Branch using this command: (`git checkout -b feature/AmazingFeature`)
+   1. I recommend using either SourceTree or GitHub Desktop for tracking version control and making branches etc.
+7. Commit your Changes (`git commit -m 'Add some AmazingFeature'`) or in those programs from step 6.
+8. Before pushing your commits to your `feature/AmazingFeature` branch, go ahead and run `black` and `flake8` to eliminate any merge issues before they happen. This ensures your work is more likely to be merged into the main branch.
+   1. `black (path to your file)`
+   2. `flake8 (path to your file)`
+9.  Push to the Branch (`git push origin feature/AmazingFeature`)
+10. Open a Pull Request
+11. Wait for an admin to approve your changes and merge them into the main branch.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
