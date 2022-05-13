@@ -24,6 +24,7 @@ Feel free to share this repo by Tweeting it!
 
 
 ## Ideas that could be used later
+sudo -H pip install Box2D
 
 ### Future Work
 There is a chance that the agent will forget where it has been and will get "lost". This would occur when the agent's confidence attribute falls below its personality threshold during exploration and a variable "chance" (which ranges from 0 to 1) is greater than 0.95. In this case the agent begins randomly walking from its current position and loses more health than usual. This is not implemented in the base simulation but in a more advanced version.
