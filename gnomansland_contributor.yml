@@ -7,3 +7,5 @@ dependencies:
   - pytest
   - black
   - flake8
+  - gym
+  - pygame
