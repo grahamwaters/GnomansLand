@@ -124,24 +124,21 @@ The primary tools used for development in this project are python, scikit-learn,
 
 To get started setting up your project locally follow these simple steps.
 
-If you don't already have the prerequisites installed and ready to go then use pip to install them in a new conda environment.
-  ```sh
-  pip install pandas etc...
-  ```
-
-### Installation
-
-_Below you will find instructions on how you can install and set up your app._
-
-1. Clone the repo
-```sh
-    git clone https://github.com/grahamwaters/GnomansLand
-```
-2. Install pip packages
-```sh
-    pip install ...
-```
-
+1. Fork the Project
+2. clone the repository to edit it locally on your computer: `git clone https://github.com/grahamwaters/GnomansLand.git`
+3. `cd` into the repository folder: `cd GnomansLand`
+4. Create a conda environment named GnomansLand: `conda env create -n GnomansLand --file gnomansland_contributor.yml`
+5. Activate the environment: `conda activate GnomansLand`
+   1. You should see `(GnomansLand)` to the left of your terminal prompt now.
+6. If you like using the terminal then you could create your Feature Branch using this command: (`git checkout -b feature/AmazingFeature`)
+   1. I recommend using either SourceTree or GitHub Desktop for tracking version control and making branches etc.
+7. Commit your Changes (`git commit -m 'Add some AmazingFeature'`) or in those programs from step 6.
+8. Before pushing your commits to your `feature/AmazingFeature` branch, go ahead and run `black` and `flake8` to eliminate any merge issues before they happen. This ensures your work is more likely to be merged into the main branch.
+   1. `black (path to your file)`
+   2. `flake8 (path to your file)`
+9.  Push to the Branch (`git push origin feature/AmazingFeature`)
+10. Open a Pull Request
+11. Wait for an admin to approve your changes and merge them into the main branch.
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -149,11 +146,11 @@ _Below you will find instructions on how you can install and set up your app._
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Usage Examples
 
 Usage will be added here once there is a working product to illustrate.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+_For more examples, please refer to the [Documentation](https://github.com/grahamwaters/GnomansLand/blob/master/Genesis.md)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -197,22 +194,6 @@ Contributions are what make the open source community such an amazing place to l
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again! Welcome to your Gnome away from home.
-
-1. Fork the Project
-2. clone the repository to edit it locally on your computer: `git clone https://github.com/grahamwaters/GnomansLand.git`
-3. `cd` into the repository folder: `cd GnomansLand`
-4. Create a conda environment named GnomansLand: `conda env create -n GnomansLand --file gnomansland_contributor.yml`
-5. Activate the environment: `conda activate GnomansLand`
-   1. You should see `(GnomansLand)` to the left of your terminal prompt now.
-6. If you like using the terminal then you could create your Feature Branch using this command: (`git checkout -b feature/AmazingFeature`)
-   1. I recommend using either SourceTree or GitHub Desktop for tracking version control and making branches etc.
-7. Commit your Changes (`git commit -m 'Add some AmazingFeature'`) or in those programs from step 6.
-8. Before pushing your commits to your `feature/AmazingFeature` branch, go ahead and run `black` and `flake8` to eliminate any merge issues before they happen. This ensures your work is more likely to be merged into the main branch.
-   1. `black (path to your file)`
-   2. `flake8 (path to your file)`
-9.  Push to the Branch (`git push origin feature/AmazingFeature`)
-10. Open a Pull Request
-11. Wait for an admin to approve your changes and merge them into the main branch.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
