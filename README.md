@@ -57,6 +57,14 @@ Feel free to share this project on Twitter!
 
 This project started as a simple exercise in the use of pygame and reinforcement agents and grew into a fascinatingly organic (theoretically open-world) mixture of minecraft, age of empires, fallout shelter, and NetLogo. We are building a semi-open world virtual wilderness for our Gnomes. They live in a post-apocolypic survival society where they have to hunt and gather to stay alive.
 
+### Consider the example d3 visualization below.
+<div align="center">
+  <iframe width="100%" height="884" frameborder="0"
+    src="https://observablehq.com/embed/3f49b996bdb3319c?cells=initializeSVG"></iframe>
+</div>
+
+
+
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
