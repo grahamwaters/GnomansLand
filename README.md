@@ -88,7 +88,6 @@ This project started as a simple exercise in the use of pygame and reinforcement
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Product Name Screen Shot][product-screenshot]
 ![Product Name Screen Shot][panel1]
 ![Product Name Screen Shot][panel2]
 There are many Interesting subtasks within this project:
