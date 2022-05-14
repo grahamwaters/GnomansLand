@@ -57,32 +57,6 @@ Feel free to share this project on Twitter!
 
 This project started as a simple exercise in the use of pygame and reinforcement agents and grew into a fascinatingly organic (theoretically open-world) mixture of minecraft, age of empires, fallout shelter, and NetLogo. We are building a semi-open world virtual wilderness for our Gnomes. They live in a post-apocolypic survival society where they have to hunt and gather to stay alive.
 
-<<<<<<< Updated upstream
-
-
-
-
-=======
-### Consider the example d3 visualization below.
-
-# This is a title
-
-> this is a blockquote
-
-<script>
-  // this is a script that renders a chart
-  var chart = d3.select('body').append('svg')
-     // ...etc...
-</script>
-
-
-
-
-
-<iframe width="100%" height="930" frameborder="0"
-  src="https://observablehq.com/embed/3f49b996bdb3319c?cells=initializeSVG%2Csimulation"></iframe>
->>>>>>> Stashed changes
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -115,7 +89,8 @@ This project started as a simple exercise in the use of pygame and reinforcement
 ## About The Project
 
 ![Product Name Screen Shot][product-screenshot]
-
+![Product Name Screen Shot][panel1]
+![Product Name Screen Shot][panel2]
 There are many Interesting subtasks within this project:
 * (Keeping it PG) Integration of Gnomes having children, resulting in attribute inheritence.
 * Resource Optimization in the enviornment.
@@ -276,3 +251,5 @@ If you have questions or concerns about the project, or just want to chat about 
 [iso1]: images/example_isometric_scene.png
 [iso2]: images/example_isometricscene2.png
 [iso_goal]: images/goal_visual_iso.jpg
+[panel1]: images/panel1.png
+[panel2]: images/panel2.png
