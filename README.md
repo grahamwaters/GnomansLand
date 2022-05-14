@@ -90,6 +90,7 @@ This project started as a simple exercise in the use of pygame and reinforcement
 
 ![Product Name Screen Shot][panel1]
 ![Product Name Screen Shot][panel2]
+
 There are many Interesting subtasks within this project:
 * (Keeping it PG) Integration of Gnomes having children, resulting in attribute inheritence.
 * Resource Optimization in the enviornment.
@@ -128,6 +129,7 @@ To get started setting up your project locally follow these simple steps.
 2. clone the repository to edit it locally on your computer: `git clone https://github.com/grahamwaters/GnomansLand.git`
 3. `cd` into the repository folder: `cd GnomansLand`
 4. Create a conda environment named GnomansLand: `conda env create -n GnomansLand --file gnomansland_contributor.yml`
+   1. _note that conda recommends installation of packages after activation of the environment. Does this apply when creating from a yml file as well?_
 5. Activate the environment: `conda activate GnomansLand`
    1. You should see `(GnomansLand)` to the left of your terminal prompt now.
 6. If you like using the terminal then you could create your Feature Branch using this command: (`git checkout -b feature/AmazingFeature`)
@@ -143,7 +145,18 @@ To get started setting up your project locally follow these simple steps.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Installation of Required Packages
+_If you have a GPU then your CUDA will be automatically using it. Else it will be slower but can use your CPU instead._
 
+1. Run the command `pip install --upgrade pip`
+2. `pip install mlagents`
+   1. If this gives you any errors then use the line below instead.
+   2. `pip install mlagents --use-feature=2020-resolver`
+3. Test install by running `mlagents-learn --help` which should return a help doc for the mlagents-learn function.
+4. To update all packages in the virtual anaconda environment run the line: `conda update --all --name GnomansLand`
+
+## Unity Installation Steps
+For all unity-related steps see the unity readme file included in this repository.
 
 <!-- USAGE EXAMPLES -->
 ## Usage Examples

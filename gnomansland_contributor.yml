@@ -12,3 +12,7 @@ dependencies:
   - scikit-learn
   - pandas
   - matplotlib
+  - PyTorch
+  - CUDA
+  - ML-Agents
+  - mlagents  # could give compatability errors
