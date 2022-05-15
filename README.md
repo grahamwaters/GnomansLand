@@ -31,7 +31,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/grahamwaters/GnomansLand">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/maintitle.png" alt="Logo" width="1640" height="924">
   </a>
 
   <h3 align="center">GnomansLand</h3>
