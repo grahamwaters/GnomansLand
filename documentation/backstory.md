@@ -1,3 +1,5 @@
+_this document was generated with the help of an ai writing assistant_
+
 # The Storyline of the game:
  A long series of short snippets that describe random things that the Agent (now referred to as the character Greg) encounters, thinks about, or does in the world.
 
