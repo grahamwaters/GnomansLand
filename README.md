@@ -53,7 +53,8 @@ Feel free to share this project on Twitter!
 
 ## Introduction
 
-This project started as a simple exercise in the use of pygame and reinforcement agents and grew into a fascinatingly organic (theoretically open-world) mixture of minecraft, age of empires, fallout shelter, and NetLogo. We are building a semi-open world virtual wilderness for our Gnomes. They live in a post-apocalypic survival society where they have to hunt and gather to stay alive.
+What is GnomansLand?
+This project started as a simple exercise in the use of pygame and OpenAI to create reinforcement agents. But with time it became something else entirely. It grew into a fascinatingly organic (theoretically open-world) mixture of Minecraft, Age of empires (from the good old days), fallout shelter, and NetLogo. We are building a virtual experience for our Gnomes and watching them learn. They must learn or they will die out. Using concepts introduced in genetic algorithms and natural selection we hope to program this civilization to stay alive and even thrive in their post-apocalyptic survival society where they not only have to hunt and gather to stay alive, but must adapt to changing conditions and learn on the go.
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -84,8 +85,8 @@ This project started as a simple exercise in the use of pygame and reinforcement
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
-The game is split into phases that the player guides their gnome population through. Each phase represents a different challenge for the reinforcement learning agents to master before the next one begins; however, they could fail and the game would start over. The phases begin with: Emergence.
+## An Outline of the Game
+The gameflow is divided into six phases, each with its own unique and novel challenge for the gnomes. These different challenges for the reinforcement learning agents are to build their mastery (ideally) before the next chapter begins; however, if the population does not learn the necessary skills before the chapter ends, they could be annihilated resulting in a game over scenario.
 
 ![Product Name Screen Shot][panel1]
 ![Product Name Screen Shot][panel2]
@@ -99,12 +100,27 @@ The game is split into phases that the player guides their gnome population thro
 ![Product Name Screen Shot][panel10]
 ![Product Name Screen Shot][panel11]
 
-There are many Interesting subtasks within this project:
-* (Keeping it PG) Integration of Gnomes having children, resulting in attribute inheritence.
-* Resource Optimization in the enviornment.
-* Genetic Algorithm Application for the life of the Gnomes.
+## We are looking for Contributors in the Following Areas
 
-At the very least we are building a virtual space where Gnomes live and interact. They must gather to survive, and avoid dangers that are randomly placed throughout the action-space.
+  * We are looking to build our game in Unity3d. If you are a Unity expert, or are familiar with using ML in Unity3d, then you have a place with us.
+
+  * Genetic Algorithms are often complex. If you have experience coding these or other machine learning algorithms, then reach out, and we can find a task to assign to you.
+  * Graph optimization
+  * Agent Behavior modification through policy generation
+  * Game Art
+  * Game Story Flow
+  * Repository Maintenance and Organization
+  * Code Security on GitHub
+  * All Machine Learning Experts
+  * Experienced C# Developers for Unity Scripts
+
+## Some ideas have already been shared, here are three examples:
+
+  * Enable the gnomes to reproduce, resulting in nuclear attribute inheritance (Yes, we will assume the inheritance of acquired characteristics).
+  * We are using shared crowd knowledge to enhance the resource optimization of hunter-gatherers.
+  * We are applying Genetic Algorithms and Stamina/Strength/Motivation to the abilities and lives of the Gnomes.
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
 
 
 
