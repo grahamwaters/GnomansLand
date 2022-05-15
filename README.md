@@ -90,6 +90,16 @@ This project started as a simple exercise in the use of pygame and reinforcement
 
 ![Product Name Screen Shot][panel1]
 ![Product Name Screen Shot][panel2]
+![Product Name Screen Shot][panel3]
+![Product Name Screen Shot][panel4]
+![Product Name Screen Shot][panel5]
+![Product Name Screen Shot][panel6]
+![Product Name Screen Shot][panel7]
+![Product Name Screen Shot][panel8]
+![Product Name Screen Shot][panel9]
+![Product Name Screen Shot][panel10]
+![Product Name Screen Shot][panel11]
+
 There are many Interesting subtasks within this project:
 * (Keeping it PG) Integration of Gnomes having children, resulting in attribute inheritence.
 * Resource Optimization in the enviornment.
@@ -250,5 +260,14 @@ If you have questions or concerns about the project, or just want to chat about 
 [iso1]: images/example_isometric_scene.png
 [iso2]: images/example_isometricscene2.png
 [iso_goal]: images/goal_visual_iso.jpg
-[panel1]: images/panel1.png
-[panel2]: images/panel2.png
+[panel1]: images/1.png
+[panel2]: images/2.png
+[panel3]: images/4.png
+[panel4]: images/5.png
+[panel5]: images/6.png
+[panel6]: images/7.png
+[panel7]: images/8.png
+[panel8]: images/11.png
+[panel9]: images/12.png
+[panel10]: images/16.png
+[panel11]: images/17.png
