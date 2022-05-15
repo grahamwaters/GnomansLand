@@ -87,6 +87,7 @@ This project started as a simple exercise in the use of pygame and reinforcement
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+The game is split into phases that the player guides their gnome population through. Each phase represents a different challenge for the reinforcement learning agents to master before the next one begins; however, they could fail and the game would start over. The phases begin with: Emergence.
 
 ![Product Name Screen Shot][panel1]
 ![Product Name Screen Shot][panel2]
