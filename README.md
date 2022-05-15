@@ -260,10 +260,7 @@ If you have questions or concerns about the project, or just want to chat about 
 [iso1]: images/example_isometric_scene.png
 [iso2]: images/example_isometricscene2.png
 [iso_goal]: images/goal_visual_iso.jpg
-<<<<<<< HEAD
-[panel1]: images/panel1.png
-[panel2]: images/panel2.png
-=======
+
 [panel1]: images/1.png
 [panel2]: images/2.png
 [panel3]: images/4.png
@@ -275,4 +272,3 @@ If you have questions or concerns about the project, or just want to chat about 
 [panel9]: images/12.png
 [panel10]: images/16.png
 [panel11]: images/17.png
->>>>>>> 299746de0fb06b47ea731011525eadc14d005bdc
