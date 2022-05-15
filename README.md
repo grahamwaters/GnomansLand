@@ -36,7 +36,7 @@
 
   <h3 align="center">GnomansLand</h3>
 
-  <h4 alight="center">(by Graham Waters)</h4>
+  <h4 alight="center">(Aquapac Games)</h4>
 
   <p align="center">
     The simulated world where gnomes rule and thrive while avoiding the perils of a dangerous planet.
