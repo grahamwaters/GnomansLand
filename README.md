@@ -23,9 +23,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
+[![LinkedIn][linkedin-shield]][grahamwaters-linkedin-url]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -217,6 +215,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Contributors
+### Graham Waters [![LinkedIn][linkedin-shield]][grahamwaters-linkedin-url]
+### Nora Abuassaf [![LinkedIn][linkedin-shield]][nura-linkedin-url]
 
 
 <!-- CONTACT -->
@@ -256,7 +257,8 @@ If you have questions or concerns about the project, or just want to chat about 
 [license-url]: https://github.com/grahamwaters/GnomansLand/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 
-[linkedin-url]: https://linkedin.com/in/grahamwaters01
+[nura-linkedin-url]:https://www.linkedin.com/in/nura-abuassaf/
+[grahamwaters-linkedin-url]: https://linkedin.com/in/grahamwaters01
 [product-screenshot]: images/screenshot.png
 [iso1]: images/example_isometric_scene.png
 [iso2]: images/example_isometricscene2.png
