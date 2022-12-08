@@ -3,14 +3,37 @@ import pygame
 import random
 
 class Gnome:
+    """
+        The Gnome class represents the gnome agent in the game.
+        The Gnome class has the following attributes and methods:
+            x: The x-coordinate of the gnome's position.
+            y: The y-coordinate of the gnome's position.
+            carrying: The type of item the gnome is currently carrying. This can be None if the gnome is not carrying any items.
+            __init__(): The constructor for the Gnome class. This method initializes the gnome with a starting position and sets carrying to None.
+            move(): This method moves the gnome to a new position in the game world.
+            act(): This method is called when the gnome needs to take an action in the game world, such as moving or picking up an item.
+            render(): This method renders the gnome to the screen.
+    """
     def __init__(self, x: int, y: int):
+        """
+        Initialize the gnome with the specified starting position.
+
+        :param x: The x-coordinate of the gnome's starting position.
+        :param y: The y-coordinate of the gnome's starting position.
+        """
         self.x = x
         self.y = y
-        self.carrying = None
+        self.carrying = None # the gnome is not carrying anything
 
     def move(self, dx: int, dy: int):
-        self.x += dx
-        self.y += dy
+        """
+        Move the gnome to a new position in the game world.
+
+        :param dx: The change in x-coordinate.
+        :param dy: The change in y-coordinate.
+        """
+        self.x += dx # move the gnome in the x direction by dx
+        self.y += dy # move the gnome in the y direction by dy
 
     def act(self, environment: "Environment"):
         """

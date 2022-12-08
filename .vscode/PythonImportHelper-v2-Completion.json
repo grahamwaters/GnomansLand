@@ -69,6 +69,62 @@
         "documentation": {}
     },
     {
+        "label": "Gnome",
+        "importPath": "gnome",
+        "description": "gnome",
+        "isExtraImport": true,
+        "detail": "gnome",
+        "documentation": {}
+    },
+    {
+        "label": "Gnome",
+        "importPath": "gnome",
+        "description": "gnome",
+        "isExtraImport": true,
+        "detail": "gnome",
+        "documentation": {}
+    },
+    {
+        "label": "Environment",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "Environment",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "get_reward",
+        "importPath": "policies",
+        "description": "policies",
+        "isExtraImport": true,
+        "detail": "policies",
+        "documentation": {}
+    },
+    {
+        "label": "get_reward",
+        "importPath": "policies",
+        "description": "policies",
+        "isExtraImport": true,
+        "detail": "policies",
+        "documentation": {}
+    },
+    {
+        "label": "Game",
+        "importPath": "game",
+        "description": "game",
+        "isExtraImport": true,
+        "detail": "game",
+        "documentation": {}
+    },
+    {
         "label": "ObservationSpace",
         "kind": 6,
         "importPath": "old_files.src.environment",
@@ -276,57 +332,93 @@
         "documentation": {}
     },
     {
+        "label": "Game",
+        "kind": 6,
+        "importPath": "src.game",
+        "description": "src.game",
+        "peekOfCode": "class Game:\n    def __init__(self, environment: Environment, gnome: Gnome):\n        self.environment = environment\n        self.gnome = gnome\n    def update(self):\n        # Update the game state, such as the position of the gnome.\n    def render(self):\n        # Render the game world, such as the environment and the gnome.\n    def process_input(self):\n        # Process user input, such as keyboard or mouse events.",
+        "detail": "src.game",
+        "documentation": {}
+    },
+    {
         "label": "Gnome",
         "kind": 6,
         "importPath": "src.gnome",
         "description": "src.gnome",
-        "peekOfCode": "class Gnome:\n    def __init__(self, x: int, y: int):\n        self.x = x\n        self.y = y\n        self.carrying = None\n    def move(self, dx: int, dy: int):\n        self.x += dx\n        self.y += dy\n    def act(self, environment: \"Environment\"):\n        \"\"\"",
+        "peekOfCode": "class Gnome:\n    \"\"\"\n        The Gnome class represents the gnome agent in the game.\n        The Gnome class has the following attributes and methods:\n            x: The x-coordinate of the gnome's position.\n            y: The y-coordinate of the gnome's position.\n            carrying: The type of item the gnome is currently carrying. This can be None if the gnome is not carrying any items.\n            __init__(): The constructor for the Gnome class. This method initializes the gnome with a starting position and sets carrying to None.\n            move(): This method moves the gnome to a new position in the game world.\n            act(): This method is called when the gnome needs to take an action in the game world, such as moving or picking up an item.",
         "detail": "src.gnome",
         "documentation": {}
     },
     {
-        "label": "SCREEN_WIDTH",
+        "label": "environment",
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "SCREEN_WIDTH = 100\nSCREEN_HEIGHT = 100\npygame.init()\n# Create the screen surface and set the title.\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"Gnoman's Land\")\n# Create a dictionary of colors for the different biomes in the game world.\nbiome_colors = {\n    \"forest\": (34, 139, 34),  # Dark green\n    \"lake\": (0, 191, 255),  # Deep sky blue",
+        "peekOfCode": "environment = Environment(10, 10, 64) # 10x10 tiles, each 64x64 pixels\n# Create the gnome.\ngnome = Gnome(0, 0) # start at the top-left corner of the environment\n# Create the game.\ngame = Game(environment, gnome)\n# Run the game.\ngame.run()",
         "detail": "src.main",
         "documentation": {}
     },
     {
-        "label": "SCREEN_HEIGHT",
+        "label": "gnome",
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "SCREEN_HEIGHT = 100\npygame.init()\n# Create the screen surface and set the title.\nscreen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"Gnoman's Land\")\n# Create a dictionary of colors for the different biomes in the game world.\nbiome_colors = {\n    \"forest\": (34, 139, 34),  # Dark green\n    \"lake\": (0, 191, 255),  # Deep sky blue\n    \"grassland\": (124, 252, 0),  # Lawn green",
+        "peekOfCode": "gnome = Gnome(0, 0) # start at the top-left corner of the environment\n# Create the game.\ngame = Game(environment, gnome)\n# Run the game.\ngame.run()",
         "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "game",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "game = Game(environment, gnome)\n# Run the game.\ngame.run()",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "get_reward",
+        "kind": 2,
+        "importPath": "src.policies",
+        "description": "src.policies",
+        "peekOfCode": "def get_reward(state: np.ndarray, action: int) -> float:\n    if action == 0:  # move left\n        if state[0, 1] == 2:  # water\n            return -1.0\n        elif state[0, 1] == 5:  # mountain\n            return -0.5\n        else:\n            return 0.0\n    elif action == 1:  # move right\n        if state[0, 1] == 2:  # water",
+        "detail": "src.policies",
+        "documentation": {}
+    },
+    {
+        "label": "environment",
+        "kind": 5,
+        "importPath": "src.rules_and_requirements",
+        "description": "src.rules_and_requirements",
+        "peekOfCode": "environment = Environment(10, 10, 64) # 10x10 tiles, each 64x64 pixels\n# Create the gnome.\ngnome = Gnome(0, 0) # start at the top-left corner of the environment\n# Create the game window.\npygame.init()\n# Set the window title.\npygame.display.set_caption(\"Gnome's Land\")\n# Create the screen surface.\nscreen = pygame.display.set_mode((environment.width * environment.tile_size, environment.height * environment.tile_size))\n# Create a clock to control the game's framerate.",
+        "detail": "src.rules_and_requirements",
+        "documentation": {}
+    },
+    {
+        "label": "gnome",
+        "kind": 5,
+        "importPath": "src.rules_and_requirements",
+        "description": "src.rules_and_requirements",
+        "peekOfCode": "gnome = Gnome(0, 0) # start at the top-left corner of the environment\n# Create the game window.\npygame.init()\n# Set the window title.\npygame.display.set_caption(\"Gnome's Land\")\n# Create the screen surface.\nscreen = pygame.display.set_mode((environment.width * environment.tile_size, environment.height * environment.tile_size))\n# Create a clock to control the game's framerate.\nclock = pygame.time.Clock()",
+        "detail": "src.rules_and_requirements",
         "documentation": {}
     },
     {
         "label": "screen",
         "kind": 5,
-        "importPath": "src.main",
-        "description": "src.main",
-        "peekOfCode": "screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\npygame.display.set_caption(\"Gnoman's Land\")\n# Create a dictionary of colors for the different biomes in the game world.\nbiome_colors = {\n    \"forest\": (34, 139, 34),  # Dark green\n    \"lake\": (0, 191, 255),  # Deep sky blue\n    \"grassland\": (124, 252, 0),  # Lawn green\n    \"rocky_dirt\": (255, 222, 173),  # Navajo white\n    \"mountains\": (139, 69, 19)  # Saddle brown\n}",
-        "detail": "src.main",
+        "importPath": "src.rules_and_requirements",
+        "description": "src.rules_and_requirements",
+        "peekOfCode": "screen = pygame.display.set_mode((environment.width * environment.tile_size, environment.height * environment.tile_size))\n# Create a clock to control the game's framerate.\nclock = pygame.time.Clock()",
+        "detail": "src.rules_and_requirements",
         "documentation": {}
     },
     {
-        "label": "biome_colors",
+        "label": "clock",
         "kind": 5,
-        "importPath": "src.main",
-        "description": "src.main",
-        "peekOfCode": "biome_colors = {\n    \"forest\": (34, 139, 34),  # Dark green\n    \"lake\": (0, 191, 255),  # Deep sky blue\n    \"grassland\": (124, 252, 0),  # Lawn green\n    \"rocky_dirt\": (255, 222, 173),  # Navajo white\n    \"mountains\": (139, 69, 19)  # Saddle brown\n}\n# Create a 2D array of tiles representing the game world.\ntiles = []\nfor i in range(SCREEN_WIDTH):",
-        "detail": "src.main",
-        "documentation": {}
-    },
-    {
-        "label": "tiles",
-        "kind": 5,
-        "importPath": "src.main",
-        "description": "src.main",
-        "peekOfCode": "tiles = []\nfor i in range(SCREEN_WIDTH):\n    row = []\n    for j in range(SCREEN_HEIGHT):\n        # Choose a random biome for each tile based on the probability distribution of biomes in the game world.\n        biome = choose_biome()\n        row.append(biome)\n    tiles.append(row)\n# Draw the game world to the screen using the tile array and the biome colors.\nfor i in range(SCREEN_WIDTH):",
-        "detail": "src.main",
+        "importPath": "src.rules_and_requirements",
+        "description": "src.rules_and_requirements",
+        "peekOfCode": "clock = pygame.time.Clock()",
+        "detail": "src.rules_and_requirements",
         "documentation": {}
     }
 ]
