@@ -4291,3 +4291,25 @@ Copy code
 if x < 0 or x >= self.width or y < 0 or y >= self.height:
     return None
 This will check if the x and y coordinates are within the bounds of the self.tiles array and return None if they are not. Then, the act method in the Gnome class can check for None and handle it accordingly, such as moving in a random direction or not performing any action.
+
+# Next Day
+
+I get this error: "Exception has occurred: ValueError
+could not broadcast input array from shape (20,1) into shape (20,)
+  File "/Users/grahamwaters/Library/CloudStorage/GoogleDrive-gewaters2@gmail.com/My Drive/GnomansLand/src/game.py", line 270, in create
+    self.tiles[:, 0] = np.ones((self.width, 1), dtype=np.int8)
+  File "/Users/grahamwaters/Library/CloudStorage/GoogleDrive-gewaters2@gmail.com/My Drive/GnomansLand/src/game.py", line 331, in reset
+    self.create()
+  File "/Users/grahamwaters/Library/CloudStorage/GoogleDrive-gewaters2@gmail.com/My Drive/GnomansLand/src/game.py", line 410, in reset
+    self.environment.reset()
+  File "/Users/grahamwaters/Library/CloudStorage/GoogleDrive-gewaters2@gmail.com/My Drive/GnomansLand/src/game.py", line 445, in <module>
+    game.reset()"
+
+from the line """
+        self.tiles[0, :] = np.ones((1, self.height), dtype=np.int8)
+        self.tiles[-1, :] = np.ones((1, self.height), dtype=np.int8)
+        self.tiles[:, 0] = np.ones((self.width, 1), dtype=np.int8)
+"""
+
+
+This error is occurring because the numpy array self.tiles is not the correct shape for the operation you are trying to perform on it. In particular, when you try to set the first and last columns of self.tiles to 1, you are trying to assign a 2D array with shape (self.width, 1) to a 1D array with shape (self.width,). To fix this error, you can either reshape the array you are trying to assign to the correct shape, or use a different method to set the values in the first and last columns of self.tiles. For example, you could use the numpy fill method instead of trying to assign a new array to the first and last columns.
