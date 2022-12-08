@@ -60,6 +60,15 @@
         "documentation": {}
     },
     {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
         "label": "ObservationSpace",
         "kind": 6,
         "importPath": "old_files.src.environment",
@@ -255,6 +264,24 @@
         "description": "old_files.tests.test_sth",
         "peekOfCode": "def test_2() -> None:\n    assert demo_variable_imported_from_module == \"Hello! I come from the module 'module_example.py'\"",
         "detail": "old_files.tests.test_sth",
+        "documentation": {}
+    },
+    {
+        "label": "Environment",
+        "kind": 6,
+        "importPath": "src.environment",
+        "description": "src.environment",
+        "peekOfCode": "class Environment:\n    \"\"\"\n    The Environment class represents the game world and its objects and features.\n    The Environment class has the following attributes and methods:\n        width: The width of the environment, in tiles.\n        height: The height of the environment, in tiles.\n        tile_size: The size of each tile, in pixels.\n        tiles: A 2D array of tiles representing the game world.\n        __init__(): The constructor for the Environment class. This method initializes the environment with the specified width, height, and tile size, and creates an empty array of tiles.\n        create(): This method generates the tiles for the game world.",
+        "detail": "src.environment",
+        "documentation": {}
+    },
+    {
+        "label": "Gnome",
+        "kind": 6,
+        "importPath": "src.gnome",
+        "description": "src.gnome",
+        "peekOfCode": "class Gnome:\n    def __init__(self, x: int, y: int):\n        self.x = x\n        self.y = y\n        self.carrying = None\n    def move(self, dx: int, dy: int):\n        self.x += dx\n        self.y += dy\n    def act(self, environment: \"Environment\"):\n        \"\"\"",
+        "detail": "src.gnome",
         "documentation": {}
     },
     {
