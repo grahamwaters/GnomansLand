@@ -368,7 +368,7 @@
         "kind": 6,
         "importPath": "src.game",
         "description": "src.game",
-        "peekOfCode": "class Gnome:\n    \"\"\"\n        The Gnome class represents the gnome agent in the game.\n        The Gnome class has the following attributes and methods:\n            x: The x-coordinate of the gnome's position.\n            y: The y-coordinate of the gnome's position.\n            carrying: The type of item the gnome is currently carrying. This can be None if the gnome is not carrying any items.\n            __init__(): The constructor for the Gnome class. This method initializes the gnome with a starting position and sets carrying to None.\n            move(): This method moves the gnome to a new position in the game world.\n            act(): This method is called when the gnome needs to take an action in the game world, such as moving or picking up an item.",
+        "peekOfCode": "class Gnome:\n    \"\"\"\n    The Gnome class represents the gnome agent in the game.\n    The Gnome class has the following attributes and methods:\n        x: The x-coordinate of the gnome's position.\n        y: The y-coordinate of the gnome's position.\n        carrying: The type of item the gnome is currently carrying. This can be None if the gnome is not carrying any items.\n        __init__(): The constructor for the Gnome class. This method initializes the gnome with a starting position and sets carrying to None.\n        move(): This method moves the gnome to a new position in the game world.\n        act(): This method is called when the gnome needs to take an action in the game world, such as moving or picking up an item.",
         "detail": "src.game",
         "documentation": {}
     },
@@ -404,7 +404,7 @@
         "kind": 6,
         "importPath": "src.game",
         "description": "src.game",
-        "peekOfCode": "class Game:\n    def __init__(self, environment: Environment, gnome: Gnome):\n        self.environment = environment\n        self.gnome = gnome\n    def update(self):\n        \"\"\"\n        update the game state.\n        \"\"\"\n        self.gnome.act(self.environment) # perform an action in the environment\n    def render(self):",
+        "peekOfCode": "class Game:\n    def __init__(self, environment: Environment, gnome: Gnome):\n        self.environment = environment\n        self.gnome = gnome\n    def update(self):\n        \"\"\"\n        update the game state.\n        \"\"\"\n        self.gnome.act(self.environment)  # perform an action in the environment\n    def render(self):",
         "detail": "src.game",
         "documentation": {}
     },
@@ -413,7 +413,7 @@
         "kind": 5,
         "importPath": "src.game",
         "description": "src.game",
-        "peekOfCode": "screen_width = 800\nscreen_height = 600\n# Create the game world.\ntile_size = 32\nclass Gnome:\n    \"\"\"\n        The Gnome class represents the gnome agent in the game.\n        The Gnome class has the following attributes and methods:\n            x: The x-coordinate of the gnome's position.\n            y: The y-coordinate of the gnome's position.",
+        "peekOfCode": "screen_width = 800\nscreen_height = 600\n# Create the game world.\ntile_size = 32\nclass Gnome:\n    \"\"\"\n    The Gnome class represents the gnome agent in the game.\n    The Gnome class has the following attributes and methods:\n        x: The x-coordinate of the gnome's position.\n        y: The y-coordinate of the gnome's position.",
         "detail": "src.game",
         "documentation": {}
     },
@@ -422,7 +422,7 @@
         "kind": 5,
         "importPath": "src.game",
         "description": "src.game",
-        "peekOfCode": "screen_height = 600\n# Create the game world.\ntile_size = 32\nclass Gnome:\n    \"\"\"\n        The Gnome class represents the gnome agent in the game.\n        The Gnome class has the following attributes and methods:\n            x: The x-coordinate of the gnome's position.\n            y: The y-coordinate of the gnome's position.\n            carrying: The type of item the gnome is currently carrying. This can be None if the gnome is not carrying any items.",
+        "peekOfCode": "screen_height = 600\n# Create the game world.\ntile_size = 32\nclass Gnome:\n    \"\"\"\n    The Gnome class represents the gnome agent in the game.\n    The Gnome class has the following attributes and methods:\n        x: The x-coordinate of the gnome's position.\n        y: The y-coordinate of the gnome's position.\n        carrying: The type of item the gnome is currently carrying. This can be None if the gnome is not carrying any items.",
         "detail": "src.game",
         "documentation": {}
     },
@@ -431,7 +431,7 @@
         "kind": 5,
         "importPath": "src.game",
         "description": "src.game",
-        "peekOfCode": "tile_size = 32\nclass Gnome:\n    \"\"\"\n        The Gnome class represents the gnome agent in the game.\n        The Gnome class has the following attributes and methods:\n            x: The x-coordinate of the gnome's position.\n            y: The y-coordinate of the gnome's position.\n            carrying: The type of item the gnome is currently carrying. This can be None if the gnome is not carrying any items.\n            __init__(): The constructor for the Gnome class. This method initializes the gnome with a starting position and sets carrying to None.\n            move(): This method moves the gnome to a new position in the game world.",
+        "peekOfCode": "tile_size = 32\nclass Gnome:\n    \"\"\"\n    The Gnome class represents the gnome agent in the game.\n    The Gnome class has the following attributes and methods:\n        x: The x-coordinate of the gnome's position.\n        y: The y-coordinate of the gnome's position.\n        carrying: The type of item the gnome is currently carrying. This can be None if the gnome is not carrying any items.\n        __init__(): The constructor for the Gnome class. This method initializes the gnome with a starting position and sets carrying to None.\n        move(): This method moves the gnome to a new position in the game world.",
         "detail": "src.game",
         "documentation": {}
     },
@@ -440,7 +440,7 @@
         "kind": 5,
         "importPath": "src.game",
         "description": "src.game",
-        "peekOfCode": "screen = pygame.display.set_mode((screen_width, screen_height))\n# Set the title of the window.\npygame.display.set_caption(\"Gnomansland\")\n# Create a clock to limit the framerate.\nclock = pygame.time.Clock()\n# Create the game world.\nenvironment = Environment(20, 15, tile_size)\n# Create the gnome.\nx_value=environment.width // 2\ny_value=environment.height // 2",
+        "peekOfCode": "screen = pygame.display.set_mode((screen_width, screen_height))\n# Set the title of the window.\npygame.display.set_caption(\"Gnomansland\")\n# Create a clock to limit the framerate.\nclock = pygame.time.Clock()\n# Create the game world.\nenvironment = Environment(20, 15, tile_size)\n# Create the gnome.\nx_value = environment.width // 2\ny_value = environment.height // 2",
         "detail": "src.game",
         "documentation": {}
     },
@@ -449,7 +449,7 @@
         "kind": 5,
         "importPath": "src.game",
         "description": "src.game",
-        "peekOfCode": "clock = pygame.time.Clock()\n# Create the game world.\nenvironment = Environment(20, 15, tile_size)\n# Create the gnome.\nx_value=environment.width // 2\ny_value=environment.height // 2\ngnome = Gnome(x_value, y_value)\n# Create the game.\ngame = Game(environment, gnome)\n# Run the game loop.",
+        "peekOfCode": "clock = pygame.time.Clock()\n# Create the game world.\nenvironment = Environment(20, 15, tile_size)\n# Create the gnome.\nx_value = environment.width // 2\ny_value = environment.height // 2\ngnome = Gnome(x_value, y_value)\n# Create the game.\ngame = Game(environment, gnome)\n# Run the game loop.",
         "detail": "src.game",
         "documentation": {}
     },
@@ -458,7 +458,25 @@
         "kind": 5,
         "importPath": "src.game",
         "description": "src.game",
-        "peekOfCode": "environment = Environment(20, 15, tile_size)\n# Create the gnome.\nx_value=environment.width // 2\ny_value=environment.height // 2\ngnome = Gnome(x_value, y_value)\n# Create the game.\ngame = Game(environment, gnome)\n# Run the game loop.\ngame.run()",
+        "peekOfCode": "environment = Environment(20, 15, tile_size)\n# Create the gnome.\nx_value = environment.width // 2\ny_value = environment.height // 2\ngnome = Gnome(x_value, y_value)\n# Create the game.\ngame = Game(environment, gnome)\n# Run the game loop.\ngame.run()",
+        "detail": "src.game",
+        "documentation": {}
+    },
+    {
+        "label": "x_value",
+        "kind": 5,
+        "importPath": "src.game",
+        "description": "src.game",
+        "peekOfCode": "x_value = environment.width // 2\ny_value = environment.height // 2\ngnome = Gnome(x_value, y_value)\n# Create the game.\ngame = Game(environment, gnome)\n# Run the game loop.\ngame.run()",
+        "detail": "src.game",
+        "documentation": {}
+    },
+    {
+        "label": "y_value",
+        "kind": 5,
+        "importPath": "src.game",
+        "description": "src.game",
+        "peekOfCode": "y_value = environment.height // 2\ngnome = Gnome(x_value, y_value)\n# Create the game.\ngame = Game(environment, gnome)\n# Run the game loop.\ngame.run()",
         "detail": "src.game",
         "documentation": {}
     },

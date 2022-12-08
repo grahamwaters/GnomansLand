@@ -6,6 +6,7 @@ from collections import defaultdict
 from gnome import Gnome
 from environment import Environment
 from policies import get_reward
+
 # Initialize Pygame.
 pygame.init()
 
@@ -15,18 +16,20 @@ screen_height = 600
 # Create the game world.
 tile_size = 32
 
+
 class Gnome:
     """
-        The Gnome class represents the gnome agent in the game.
-        The Gnome class has the following attributes and methods:
-            x: The x-coordinate of the gnome's position.
-            y: The y-coordinate of the gnome's position.
-            carrying: The type of item the gnome is currently carrying. This can be None if the gnome is not carrying any items.
-            __init__(): The constructor for the Gnome class. This method initializes the gnome with a starting position and sets carrying to None.
-            move(): This method moves the gnome to a new position in the game world.
-            act(): This method is called when the gnome needs to take an action in the game world, such as moving or picking up an item.
-            render(): This method renders the gnome to the screen.
+    The Gnome class represents the gnome agent in the game.
+    The Gnome class has the following attributes and methods:
+        x: The x-coordinate of the gnome's position.
+        y: The y-coordinate of the gnome's position.
+        carrying: The type of item the gnome is currently carrying. This can be None if the gnome is not carrying any items.
+        __init__(): The constructor for the Gnome class. This method initializes the gnome with a starting position and sets carrying to None.
+        move(): This method moves the gnome to a new position in the game world.
+        act(): This method is called when the gnome needs to take an action in the game world, such as moving or picking up an item.
+        render(): This method renders the gnome to the screen.
     """
+
     def __init__(self, x: int, y: int):
         """
         Initialize the gnome with the specified starting position.
@@ -35,8 +38,8 @@ class Gnome:
         :param y: The y-coordinate of the gnome's starting position.
         """
         self.x = x
-        self.y = y #* note: this y is defined.
-        self.carrying = None # the gnome is not carrying anything
+        self.y = y  # * note: this y is defined.
+        self.carrying = None  # the gnome is not carrying anything
 
     def move(self, dx: int, dy: int):
         """
@@ -45,8 +48,8 @@ class Gnome:
         :param dx: The change in x-coordinate.
         :param dy: The change in y-coordinate.
         """
-        self.x += dx # move the gnome in the x direction by dx
-        self.y += dy # move the gnome in the y direction by dy
+        self.x += dx  # move the gnome in the x direction by dx
+        self.y += dy  # move the gnome in the y direction by dy
 
     def act(self, environment: "Environment"):
         """
@@ -102,6 +105,7 @@ class Gnome:
         gnome_size = 10
         pygame.draw.circle(screen, (255, 255, 0), (x_pos, y_pos), gnome_size)
 
+
 class Agent:
     """
     The Agent class represents an agent that uses reinforcement learning to learn a policy for the gnome to follow.
@@ -114,6 +118,7 @@ class Agent:
         act(): This method is called when the agent needs to take an action in the environment. It uses the learned policy to determine the action to take.
         learn(): This method is called when the agent experiences a reward in the environment. It updates the policy based on the reward.
     """
+
     def __init__(self):
         """
         Initialize the agent with default values for the policy, learning rate, discount factor, and exploration rate.
@@ -133,27 +138,44 @@ class Agent:
         else:
             return max(self.policy[state], key=self.policy[state].get)
 
-
     def learn(self, state: int, action: int, gnome: Gnome):
         # Get the reward for the given state and action
         reward = get_reward(state, action, gnome)
 
         # Update the policy for the state-action pair.
-        self.policy[state][action] += self.alpha * (reward - self.policy[state][action] + self.gamma * max(self.policy[state].values()))
+        self.policy[state][action] += self.alpha * (
+            reward
+            - self.policy[state][action]
+            + self.gamma * max(self.policy[state].values())
+        )
 
         # Update the policy for the state-action pairs that lead to the state.
         for s in self.policy:
             for a in self.policy[s]:
-                self.policy[s][a] += self.alpha * (reward - self.policy[s][a] + self.gamma * max(self.policy[state].values()))
+                self.policy[s][a] += self.alpha * (
+                    reward
+                    - self.policy[s][a]
+                    + self.gamma * max(self.policy[state].values())
+                )
 
         # Update the policy for the state-action pairs that lead to the state-action pairs that lead to the state.
-        for s in self.policy: # for each state
-            for a in self.policy[s]: # for each action in the state
-                for s2 in self.policy: # for each state that leads to the state and action pair
-                    for a2 in self.policy[s2]: # for each action in the state that leads to the state and action pair
+        for s in self.policy:  # for each state
+            for a in self.policy[s]:  # for each action in the state
+                for (
+                    s2
+                ) in (
+                    self.policy
+                ):  # for each state that leads to the state and action pair
+                    for a2 in self.policy[
+                        s2
+                    ]:  # for each action in the state that leads to the state and action pair
                         # Create a new Gnome instance with the same x and y coordinates as the given gnome
                         new_gnome = Gnome(gnome.x, gnome.y)
-                        self.policy[s2][a2] += self.alpha * (reward - self.policy[s2][a2] + self.gamma * max(self.policy[state].values())) # update the policy for the state-action pair that leads to the state-action pair that leads to the state-action pair that leads to the state and action pair that leads to the state and action pair with the reward received for taking the action in the state.
+                        self.policy[s2][a2] += self.alpha * (
+                            reward
+                            - self.policy[s2][a2]
+                            + self.gamma * max(self.policy[state].values())
+                        )  # update the policy for the state-action pair that leads to the state-action pair that leads to the state-action pair that leads to the state and action pair that leads to the state and action pair with the reward received for taking the action in the state.
 
 
 class Environment:
@@ -167,6 +189,7 @@ class Environment:
         __init__(): The constructor for the Environment class. This method initializes the environment with the specified width, height, and tile size, and creates an empty array of tiles.
         create(): This method generates the tiles for the game world.
     """
+
     tile_colors = {
         0: (0, 0, 0),  # Black for empty tiles
         1: (0, 255, 0),  # Green for forest tiles
@@ -175,6 +198,7 @@ class Environment:
         4: (128, 128, 128),  # Grey for rocky dirt tiles
         5: (255, 0, 0),  # Red for mountain tiles
     }
+
     def __init__(self, width: int, height: int, tile_size: int):
         """
         Initialize the environment with the specified width, height, and tile size.
@@ -214,7 +238,6 @@ class Environment:
         self.agent_x = x
         self.agent_y = y
 
-
     def create(self):
         """
         Create the game world by randomly generating the tiles.
@@ -252,7 +275,9 @@ class Environment:
         for i in range(self.width):
             for j in range(self.height):
                 if self.tiles[i, j] == 0:
-                    tile_type = random.choices(list(tile_probs.keys()), weights=list(tile_probs.values()))[0]
+                    tile_type = random.choices(
+                        list(tile_probs.keys()), weights=list(tile_probs.values())
+                    )[0]
                     self.tiles[i, j] = tile_type
 
     def get_tile(self, x: int, y: int):
@@ -296,6 +321,8 @@ class Environment:
 
                 # Calculate the position of the tile on the screen.
                 x_pos = i * tile_size
+
+
 class Policies:
     def __init__(self):
         pass
@@ -330,6 +357,7 @@ class Policies:
             else:
                 return 0.0
 
+
 class Game:
     def __init__(self, environment: Environment, gnome: Gnome):
         self.environment = environment
@@ -340,8 +368,7 @@ class Game:
         update the game state.
 
         """
-        self.gnome.act(self.environment) # perform an action in the environment
-
+        self.gnome.act(self.environment)  # perform an action in the environment
 
     def render(self):
         """
@@ -371,10 +398,11 @@ class Game:
     def run(self):
         # Run the game loop, which updates the game state, renders the game world, and processes user input.
         while True:
-            self.update() # update the game state
-            self.render() # render the game world
+            self.update()  # update the game state
+            self.render()  # render the game world
             #!self.process_input() # process user input
-            clock.tick(60) # limit the framerate to 60 frames per second
+            clock.tick(60)  # limit the framerate to 60 frames per second
+
 
 screen = pygame.display.set_mode((screen_width, screen_height))
 
@@ -389,8 +417,8 @@ clock = pygame.time.Clock()
 environment = Environment(20, 15, tile_size)
 
 # Create the gnome.
-x_value=environment.width // 2
-y_value=environment.height // 2
+x_value = environment.width // 2
+y_value = environment.height // 2
 
 gnome = Gnome(x_value, y_value)
 
