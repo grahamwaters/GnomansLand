@@ -3,7 +3,7 @@ import pygame
 import random
 from gnome import Gnome
 from environment import Environment
-from policies import get_reward()
+from policies import get_reward
 # Create the environment.
 environment = Environment(10, 10, 64) # 10x10 tiles, each 64x64 pixels
 
