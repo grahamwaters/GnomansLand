@@ -35,6 +35,30 @@
         "documentation": {}
     },
     {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "gnome_name",
         "importPath": "gnome_basic",
         "description": "gnome_basic",
@@ -83,6 +107,14 @@
         "description": "collections",
         "isExtraImport": true,
         "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "get_reward",
+        "importPath": "src.policies",
+        "description": "src.policies",
+        "isExtraImport": true,
+        "detail": "src.policies",
         "documentation": {}
     },
     {
@@ -389,7 +421,7 @@
         "kind": 6,
         "importPath": "src.game",
         "description": "src.game",
-        "peekOfCode": "class Game:\n    def __init__(self, environment: Environment, gnome: Gnome):\n        self.environment = environment\n        self.gnome = gnome\n        self.tile_size = 32  # the size of each tile, in pixels\n        self.is_done = False # when the game is over, set this to True\n    def update(self, state: np.ndarray):\n        \"\"\"\n        Update the game state.\n        :param state: The new state of the game world.",
+        "peekOfCode": "class Game:\n    def __init__(self, environment: Environment, gnome: Gnome):\n        self.environment = environment\n        self.gnome = gnome\n        self.tile_size = 32  # the size of each tile, in pixels\n        self.is_done = False  # when the game is over, set this to True\n    def take_action(\n        self, state: np.ndarray, action: int\n    ):  #  -> Tuple[np.ndarray, int, bool, List[int]]:\n        \"\"\"",
         "detail": "src.game",
         "documentation": {}
     },
@@ -398,7 +430,16 @@
         "kind": 2,
         "importPath": "src.game",
         "description": "src.game",
-        "peekOfCode": "def main():\n    width = 20\n    height = 15\n    tile_size = 32\n    # Initialize the game world.\n    environment = Environment(width, height, tile_size)\n    gnome = Gnome(0, 0)\n    game = Game(environment, gnome)\n    # Reset the game state.\n    game.reset() # reset the game state (environment and gnome)",
+        "peekOfCode": "def main():\n    width = 10\n    height = 10\n    tile_size = 32\n    # Create an empty environment array.\n    gnome = Gnome(0, 0)\n    environment = Environment(width, height, tile_size, gnome)\n    # Create a new Game object and pass in the environment and gnome objects.\n    game = Game(environment, gnome)\n    # Reset the game state.",
+        "detail": "src.game",
+        "documentation": {}
+    },
+    {
+        "label": "main2",
+        "kind": 2,
+        "importPath": "src.game",
+        "description": "src.game",
+        "peekOfCode": "def main2():\n    # Create a game object.\n    game = Game()\n    # Create a screen with the specified dimensions.\n    screen = pygame.display.set_mode((game.width * tile_size, game.height * tile_size))\n    # Create the environment and gnome objects.\n    environment = game.create_environment()\n    gnome = game.create_gnome()\n    # Set the initial state of the environment.\n    state = environment.get_state()",
         "detail": "src.game",
         "documentation": {}
     },
