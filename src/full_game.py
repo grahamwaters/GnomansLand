@@ -54,30 +54,30 @@ class Gnome:
 
     # * Reinforcement Learning Methods
     def q_learning_policy(
-    self, state: np.ndarray, actions, environment
-):  # -> int:
-    # Initialize the Q-values for each action to 0.
-    q_values = defaultdict(lambda: 0)
+        self, state: np.ndarray, actions, environment
+    ):  # -> int:
+        # Initialize the Q-values for each action to 0.
+        q_values = defaultdict(lambda: 0)
 
-    # Loop through each valid action.
-    for action in actions:
-        # Get the next state and reward if the gnome takes the current action.
-        next_state, reward, is_done = self.environment.step(action, state) # * note: this is the environment.step() method, not the gnome.step() method.
-        if is_done:
-            # If the gnome has reached the goal, set the Q-value for the current action to the reward.
-            q_values[action] = reward
-            continue
-        # Calculate the Q-value for the current action using the Bellman equation.
-        # Q(s, a) = reward + gamma * max(Q(s', a'))
-        q_values[action] = reward + self.gamma * max(
-            q_values[next_state, a]
-            for a in self.environment.get_valid_actions(next_state)
-        )
+        # Loop through each valid action.
+        for action in actions:
+            # Get the next state and reward if the gnome takes the current action.
+            next_state, reward, is_done = self.environment.step(action, state) # * note: this is the environment.step() method, not the gnome.step() method.
+            if is_done:
+                # If the gnome has reached the goal, set the Q-value for the current action to the reward.
+                q_values[action] = reward
+                continue
+            # Calculate the Q-value for the current action using the Bellman equation.
+            # Q(s, a) = reward + gamma * max(Q(s', a'))
+            q_values[action] = reward + self.gamma * max(
+                q_values[next_state, a]
+                for a in self.environment.get_valid_actions(next_state)
+            )
 
-    # Choose the action with the highest Q-value.
-    best_action = max(q_values, key=q_values.get)
+        # Choose the action with the highest Q-value.
+        best_action = max(q_values, key=q_values.get)
 
-    return best_action
+        return best_action
 
 
         return best_action
