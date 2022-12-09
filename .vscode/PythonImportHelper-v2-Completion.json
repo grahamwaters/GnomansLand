@@ -110,14 +110,6 @@
         "documentation": {}
     },
     {
-        "label": "get_reward",
-        "importPath": "src.policies",
-        "description": "src.policies",
-        "isExtraImport": true,
-        "detail": "src.policies",
-        "documentation": {}
-    },
-    {
         "label": "Gnome",
         "importPath": "gnome",
         "description": "gnome",

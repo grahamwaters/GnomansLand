@@ -4,7 +4,7 @@ import sys
 import random
 from collections import defaultdict
 from typing import List, Tuple, Any
-from src.policies import get_reward
+
 
 
 # Initialize Pygame.
@@ -44,6 +44,26 @@ class Gnome:
         self.min_reward = 1 # the minimum reward for not reaching the item, or for some action taken by the agent (gnome) in the environment that improves their chance of survival.
         self.min_punishment = -1 # the minimum punishment for not reaching the item, or for some action taken by the agent (gnome) in the environment.
         self.max_punishment = -10 # the maximum punishment for some action taken by the agent (gnome) in the environment.
+        self.is_dead = False # the gnome is not dead yet
+
+    def has_reached_goal(self, new_state: np.ndarray):# -> bool:
+        """
+        Check if the gnome has reached the goal in the new state.
+
+        :param new_state: The new state of the environment.
+        :return: True if the gnome has reached the goal, False otherwise.
+        """
+        # Get the indices of all the elements in new_state that have a value of 2.
+        goal_indices = np.argwhere(new_state == 2)
+
+        # Check if the gnome's current position is one of the goal indices.
+        if (self.x, self.y) in goal_indices:
+            # Return True if the gnome's current position is a goal index.
+            return True
+        else:
+            # Return False if the gnome's current position is not a goal index.
+            return False
+
     def reset(self):
         """
         Reset the gnome to its starting position.
@@ -557,6 +577,7 @@ class Environment:
         terminated = self.gnome.has_reached_goal(new_state)
         # Return the new state, the reward, whether the environment has been terminated, and the valid actions.
         return new_state, reward, False, valid_actions
+
 
 
 class Policies:
