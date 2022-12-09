@@ -8,6 +8,7 @@ import time
 
 
 
+
 # Initialize Pygame.
 pygame.init()
 
@@ -188,54 +189,6 @@ class Gnome:
         self.x += dx  # move the gnome in the x direction by dx
         self.y += dy  # move the gnome in the y direction by dy
 
-    # def act(self, state: np.ndarray, environment: "Environment"):
-    #     # Get the valid actions in the current state.
-    #     actions = environment.get_valid_actions(state)
-
-    #     # Use the Q-learning policy to choose the best action.
-    #     action = self.q_learning_policy(state, actions, environment)
-
-    #     # Take the chosen action.
-    #     # dx = 0
-    #     # dy = 0
-    #     # if action == 0:
-    #     #     dx = -1
-    #     # elif action == 1:
-    #     #     dx = 1
-    #     # elif action == 2:
-    #     #     dy = -1
-    #     # elif action == 3:
-    #     #     dy = 1
-    #     # else:
-    #     #     raise ValueError("Invalid action chosen.")
-    #     # self.move(dx, dy)
-
-
-    #     # update the state, action, and reward variables
-    #     self.state = state
-    #     self.action = action
-    #     self.reward = environment.get_reward(state, action)
-
-
-
-    #     # Use the step() method to get the new state and reward after taking the chosen action.
-    #     new_state, reward, is_done = environment.step(action, state)
-
-    #     # Use the q_learning_policy() method to choose the best action in the new state.
-    #     new_action = self.q_learning_policy(new_state, actions, environment)
-
-    #     # Update the new_state, new_action, and new_reward variables.
-    #     self.new_state = new_state
-    #     self.new_action = new_action
-    #     self.new_reward = reward
-
-    #     # Update the q-table using the q_learning_update() method.
-    #     self.q_learning_update(self.state, self.action, self.reward, self.new_state, self.new_action)
-
-    #     # update the q-table
-    #     self.q_learning_update(self.state, self.action, self.reward, self.new_state, self.new_action)
-
-    #     return action # * note: this is the action that the gnome takes in the environment.
 
     def act(self, state: np.ndarray, environment: "Environment"):
         # Get the valid actions in the current state.
@@ -262,6 +215,7 @@ class Gnome:
         self.q_learning_update(self.state, self.action, self.reward, self.new_state, self.new_action)
 
         return action # * note: this is the action that the gnome takes in the environment.
+
     def get_valid_actions(self, state: np.ndarray):# -> List[int]:
         """
         Get the valid actions that the gnome can take in the current state.
@@ -298,13 +252,25 @@ class Gnome:
         # Return the list of valid actions.
         return actions
 
+    def random_move(self, environment: "Environment"):
+        """
+              Move the gnome in a random direction.
+        """
 
-    def random_move(self):
-        """
-        Move the gnome in a random direction.
-        """
-        dx = random.choice([-1, 0, 1])
-        dy = random.choice([-1, 0, 1])
+        # as long as the edge of the map is not reached, move in a random direction.
+        if self.x == 0:
+            dx = random.choice([0, 1])
+        elif self.x == self.environment.width - 1:
+            dx = random.choice([-1, 0])
+        else:
+            dx = random.choice([-1, 0, 1])
+
+        if self.y == 0:
+            dy = random.choice([0, 1])
+        elif self.y == self.environment.height - 1:
+            dy = random.choice([-1, 0])
+        else:
+            dy = random.choice([-1, 0, 1])
         self.move(dx, dy)
         return dx, dy
 
@@ -437,7 +403,8 @@ class Environment:
         2: (0, 0, 255),  # Blue for water tiles
         3: (255, 255, 0),  # Yellow for grassland tiles
         4: (128, 128, 128),  # Grey for rocky dirt tiles
-        5: (255, 0, 0),  # Red for mountain tiles
+        5: (255, 0, 0),  # Red for mountain tiles,
+        6: (0, 255, 255),  # Cyan for goal tiles
     }
 
     def __init__(self, width: int, height: int, tile_size: int, gnome: Gnome):
@@ -464,7 +431,7 @@ class Environment:
         self.goal_y = random.randint(0, self.height - 1)
         # Create an array of tiles to represent the game world.
         self.tiles = np.zeros((width, height), dtype=np.int8)
-
+        self.step_count = 0 # keep track of the number of steps taken by the gnome
     # ^ The "Gets"
 
     def get_agent_position(self):
@@ -632,8 +599,9 @@ class Environment:
         :param y: The y-coordinate of the tile.
         :param tile: The tile to set.
         """
-        if x < 0 or x >= self.width or y < 0 or y >= self.height:
-            return None
+        if x < 0 or x >= self.width or y < 0 or y >= self.height: # or tile not in (0, 1, 2, 3, 4, 5):
+            return None # raise ValueError("Invalid tile type.")
+        # Set the tile at the specified position, if it is within the bounds of the environment to the specified tile.
         self.tiles[x, y] = tile
 
     def render(self, screen: pygame.Surface, tile_size: int):
@@ -696,6 +664,9 @@ class Environment:
 
         # Move the item to its new position.
         environment.set_tile(new_item_x, new_item_y, 1)
+
+        # Make the goal tile green even if the agent is not on it.
+        environment.set_tile(environment.goal_x, environment.goal_y, 2)
 
     def get_valid_actions(self, state: np.ndarray):
         # Get the agent's current position.
@@ -1067,11 +1038,22 @@ def test_game():
         state = environment.get_state(gnome=gnome)
 
         # Get the action from the agent.
-        action = gnome.act(state, environment)
+
+        # for the first 100 steps of the game, take a random action to explore the environment then take the best action
+        if environment.step_count < 1000:
+            # using random_move() to explore the environment for ten thousand epochs
+            action = gnome.random_move(environment)
+            environment.step_count += 1
+        else:
+            action = gnome.act(state, environment) # take the best action
+            environment.step_count += 1
 
         # Take a step in the environment.
         state, reward, is_done = environment.step(action, gnome)
         #print(action) # print the action
+
+        # update the reward based on proximity to the goal tile
+        reward = environment.get_reward(state=state, action=action) # update the reward based on proximity to the goal tile
 
         # Update the game state.
         game.is_done = is_done
