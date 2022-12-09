@@ -62,8 +62,11 @@ class Gnome:
         # Loop through each valid action.
         for action in actions:
             # Get the next state and reward if the gnome takes the current action.
-            next_state, reward, _, _ = self.environment.step(action)
-
+            next_state, reward, is_done = self.environment.step(action, state) # * note: this is the environment.step() method, not the gnome.step() method.
+            if is_done:
+                # If the gnome has reached the goal, set the Q-value for the current action to the reward.
+                q_values[action] = reward
+                continue
             # Calculate the Q-value for the current action using the Bellman equation.
             # Q(s, a) = reward + gamma * max(Q(s', a'))
             q_values[action] = reward + self.gamma * max(
@@ -112,16 +115,12 @@ class Gnome:
 
     def act(self, state: np.ndarray, environment: "Environment"):
         # Get the valid actions in the current state.
-        actions = environment.get_valid_actions()
+        actions = environment.get_valid_actions(state)
 
         # Use the Q-learning policy to choose the best action.
         action = self.q_learning_policy(state, actions, environment)
 
-        # Take the action in the environment.
-        new_state, reward, done = environment.step(action)
-
-        # Return the new state, reward, and is_done flag.
-        return new_state, reward, done
+        return action # * note: this is the action that the gnome takes in the environment.
 
     def get_valid_actions(self, state: np.ndarray):# -> List[int]:
         """
@@ -450,14 +449,13 @@ class Environment:
         # Initialize the state space with zeros.
         state_space = np.zeros((self.height, self.width))
 
-        # Set the positions of the gnome and item in the state space.
-        state_space[
-            state[0], state[1]
-        ] = 1  # set the position of the gnome in the state space
-        state_space[
-            state[2], state[3]
-        ] = 2  # set the position of the item in the state space
+        # Get the x- and y-coordinates of the agent.
+        x, y = state[0], state[1]
 
+        # Set the state space to 1 for the current position of the agent.
+        state_space[y, x] = 1
+
+        # Return the state space.
         return state_space
 
     def set_tile(self, x: int, y: int, tile: int):
@@ -567,10 +565,11 @@ class Environment:
         :return: A tuple containing the new state, the reward, and a flag indicating whether the game is over.
         """
         # Apply the action to the environment.
-        new_state = self.apply_action(action, gnome)
+        #new_state = self.apply_action(action, gnome) # this returns the new state, reward, and is_done flag
+        new_state, reward, is_done = self.apply_action(action, gnome)[:3]
 
         # Return the new state, reward, and is_done flag.
-        return new_state, 0.0, False # this has the reward set as 0.0 #note: this is the reward for the gnome
+        return new_state, reward, is_done # this has the reward set as 0.0
 
 
     def apply_action(self, action, gnome):
@@ -833,7 +832,11 @@ def test_game():
         state = environment.get_state(gnome=gnome)
 
         # Get the action from the agent.
-        action = gnome.act(state, gnome)
+        action = gnome.act(state, environment)
+
+        # Take a step in the environment.
+        state, reward, is_done = environment.step(action, gnome)
+        print(action) # print the action
 
         # Take the action in the environment.
         new_state, reward, done = game.take_action(state, action)
