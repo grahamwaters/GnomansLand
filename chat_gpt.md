@@ -4313,3 +4313,32 @@ from the line """
 
 
 This error is occurring because the numpy array self.tiles is not the correct shape for the operation you are trying to perform on it. In particular, when you try to set the first and last columns of self.tiles to 1, you are trying to assign a 2D array with shape (self.width, 1) to a 1D array with shape (self.width,). To fix this error, you can either reshape the array you are trying to assign to the correct shape, or use a different method to set the values in the first and last columns of self.tiles. For example, you could use the numpy fill method instead of trying to assign a new array to the first and last columns.
+
+
+
+---------- NEXT DAY ----------
+
+
+That sounds like a really interesting project! One approach you could take is to use a program called a "genetic algorithm" to simulate the interactions and behaviors of your gnomes. In a genetic algorithm, you would define a set of rules and parameters for your gnomes to follow, such as how they gather food, mate, and defend themselves. You would then let the gnomes interact with each other and their environment, and use the principles of natural selection to evolve their behavior over time. The gnomes with the most successful behaviors would be more likely to survive and reproduce, passing their traits on to the next generation. Over time, this would lead to the emergence of complex and adaptive behavior in your gnomes.
+
+
+  File "/Users/grahamwaters/Library/CloudStorage/GoogleDrive-gewaters2@gmail.com/My Drive/GnomansLand/src/full_game.py", line 581, in step
+    self.gnome.act(
+  File "/Users/grahamwaters/Library/CloudStorage/GoogleDrive-gewaters2@gmail.com/My Drive/GnomansLand/src/full_game.py", line 121, in act
+    new_state, reward, is_done, _ = self.environment.step(action)
+  File "/Users/grahamwaters/Library/CloudStorage/GoogleDrive-gewaters2@gmail.com/My Drive/GnomansLand/src/full_game.py", line 581, in step
+    self.gnome.act(
+  File "/Users/grahamwaters/Library/CloudStorage/GoogleDrive-gewaters2@gmail.com/My Drive/GnomansLand/src/full_game.py", line 121, in act
+    new_state, reward, is_done, _ = self.environment.step(action)
+  File "/Users/grahamwaters/Library/CloudStorage/GoogleDrive-gewaters2@gmail.com/My Drive/GnomansLand/src/full_game.py", line 546, in step
+    state = self.get_state()  # -> np.ndarray
+  File "/Users/grahamwaters/Library/CloudStorage/GoogleDrive-gewaters2@gmail.com/My Drive/GnomansLand/src/full_game.py", line 414, in get_state
+    item_x, item_y = self.get_item_position()
+  File "/Users/grahamwaters/Library/CloudStorage/GoogleDrive-gewaters2@gmail.com/My Drive/GnomansLand/src/full_game.py", line 393, in get_item_position
+    item_x, item_y = np.where(self.tiles == 1)
+  File "<__array_function__ internals>", line 177, in where
+RecursionError: maximum recursion depth exceeded while calling a Python object
+
+I get this error: "RecursionError: maximum recursion depth exceeded while calling a Python object"
+
+Copilot: I'm not sure what you mean by "recursion depth". Can you explain a little more?

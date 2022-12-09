@@ -110,27 +110,19 @@ class Gnome:
         self.x += dx  # move the gnome in the x direction by dx
         self.y += dy  # move the gnome in the y direction by dy
 
-    def act(self, action):
-        # Get the current state of the environment.
-        state = self.environment.tiles
+    def act(self, state: np.ndarray, environment: "Environment"):
+        # Get the valid actions in the current state.
+        actions = environment.get_valid_actions()
 
-        # Check the value of the tile at the gnome's current position.
-        tile_value = state[self.x][self.y]
+        # Use the Q-learning policy to choose the best action.
+        action = self.q_learning_policy(state, actions, environment)
 
         # Take the action in the environment.
-        new_state, reward, is_done, _ = self.environment.step(action)
-
-        # Update the gnome's position.
-        self.x = new_state[0]
-        self.y = new_state[1]
-
-        # Check if the gnome has reached the goal.
-        if self.has_reached_goal(new_state):
-            # Set carrying to None if the gnome has reached the goal.
-            self.carrying = None
+        new_state, reward, done = environment.step(action)
 
         # Return the new state, reward, and is_done flag.
-        return new_state, reward, is_done
+        return new_state, reward, done
+
 
 
     def random_move(self):
@@ -313,8 +305,6 @@ class Environment:
             self.tiles[self.gnome_x, self.gnome_y],
         )  # return the state
 
-    # ^ The "Sets"
-
     def set_agent_position(self, x: int, y: int):
         """
         Set the position of the agent in the environment.
@@ -326,7 +316,7 @@ class Environment:
         self.gnome_x = x
         self.gnome_y = y
 
-    def create(self):
+    def create(self, gnome: Gnome):
         """
         Create the game world by randomly generating the tiles.
 
@@ -343,32 +333,29 @@ class Environment:
             5: 0.1,  # Mountain tiles
         }
         # Check that the tile probabilities add up to 1.
-        #!assert abs(sum(tile_probs.values()) - 1.0) ==1, "Tile probabilities must sum to 1."
+        #!assert abs(sum(tile_probs.values()) - 1.0) < 1e-6
 
-        # initial placement of agent
-        # Generate the initial position of the agent.
-        gnome_x = random.randint(0, self.width - 1)
-        gnome_y = random.randint(0, self.height - 1)
+        # Generate the tiles for the game world.
+        for x in range(self.width):
+            for y in range(self.height):
+                # Generate a random number between 0 and 1.
+                r = random.random()
 
-        # Set the tile at the agent's initial position to be empty.
-        self.tiles[gnome_x, gnome_y] = 0
+                # Set the tile type based on the probabilities.
+                if r < tile_probs[1]:
+                    self.tiles[x, y] = 1  # Forest tile
+                elif r < tile_probs[1] + tile_probs[2]:
+                    self.tiles[x, y] = 2  # Water tile
+                elif r < tile_probs[1] + tile_probs[2] + tile_probs[3]:
+                    self.tiles[x, y] = 3  # Grassland tile
+                elif r < tile_probs[1] + tile_probs[2] + tile_probs[3] + tile_probs[4]:
+                    self.tiles[x, y] = 4  # Rocky dirt tile
+                else:
+                    self.tiles[x, y] = 5  # Mountain tile
 
-        # Generate water tiles along the edges of the environment.
-        for i in range(self.width):
-            self.tiles[i, 0] = 2
-            self.tiles[i, self.height - 1] = 2
-        for j in range(self.height):
-            self.tiles[0, j] = 2
-            self.tiles[self.width - 1, j] = 2
-
-        # Create the remaining tiles by randomly setting each tile to a type based on the tile probabilities.
-        for i in range(self.width):
-            for j in range(self.height):
-                if self.tiles[i, j] == 0:
-                    tile_type = random.choices(
-                        list(tile_probs.keys()), weights=list(tile_probs.values())
-                    )[0]
-                    self.tiles[i, j] = tile_type
+        # Place the gnome in the environment.
+        self.gnome_x = random.randint(0, self.width - 1)
+        self.gnome_y = random.randint(0, self.height - 1)
 
     def get_tile(self, x: int, y: int):
         """
@@ -403,18 +390,20 @@ class Environment:
                     item_positions.append((x, y))
         return item_positions
 
-    def get_state(self):  #  -> np.ndarray
+    def get_state(self, gnome: Gnome):
         """
-        Get the current state of the game world.
+        Get the current state of the environment.
 
-        :return: A numpy array with the current positions of the gnome and item.
+        :return: A tuple containing the current position of the agent and the type of tile it is on.
         """
-        # Get the current positions of the gnome and item.
-        gnome_x, gnome_y = self.get_agent_position()
-        item_x, item_y = self.get_item_position()
-        # this is a 2d space so we can use numpy arrays to represent the state of the environment (x, y) of the gnome and the item, and the type of tile the gnome is on (0-5)
-        # Return the state as a numpy array.
-        return np.array([gnome_x, gnome_y, item_x, item_y])
+
+        return (
+            self.gnome_x,
+            self.gnome_y,
+            self.tiles[self.gnome_x, self.gnome_y],
+        )  # return the state as a tuple
+
+
 
     def get_state_space(self, state: np.ndarray):  # -> np.ndarray:
         """
@@ -534,63 +523,69 @@ class Environment:
         # Return the valid actions for the current state.
         return valid_actions
 
-    def step(self, action: int):  # -> Tuple[np.ndarray, int, bool, List[int]]:
+    def step(self, action: int, gnome: Gnome):
         """
-        Take a step in the environment.
+        Take a step in the environment by applying the specified action.
 
         :param action: The action to take.
-        :return: The new state of the environment, the reward obtained, and whether the environment has been terminated.
+        :param gnome: An instance of the Gnome class.
+        :return: A tuple containing the new state, the reward, and a flag indicating whether the game is over.
         """
+        # Apply the action to the environment.
+        new_state = self.apply_action(action, gnome)
 
-        # Get the current state of the environment.
-        state = self.get_state()  # -> np.ndarray
+        # Return the new state, reward, and is_done flag.
+        return new_state, 0.0, False # this has the reward set as 0.0 #note: this is the reward for the gnome
 
-        # Get the state space of the environment.
-        state_space = self.get_state_space(state)  # -> np.ndarray
 
-        # Get the agent's current position.
-        gnome_x, gnome_y = self.get_agent_position()
+    def apply_action(self, action, gnome):
+        # Apply the action to the environment.
+        x, y, tile = self.get_state(gnome)
+        # Update the position of the agent in the environment.
+        if action == 0:  # move left
+            x -= 1
+        elif action == 1:  # move right
+            x += 1
+        elif action == 2:  # move up
+            y -= 1
+        elif action == 3:  # move down
+            y += 1
+        # Check if the agent has moved out of bounds.
+        if x < 0 or x >= self.width or y < 0 or y >= self.height:
+            return self.get_state(gnome), -1.0, True
+        # Update the position of the agent in the environment.
+        self.set_agent_position(x, y)
+        # Return the new state, reward, and is_done flag.
+        return self.get_state(gnome), 0.0, False
 
-        # Get the item's current position.
-        item_x, item_y = self.get_item_position()
 
-        # Get the tile at the agent's current position.
-        tile = self.get_tile(gnome_x, gnome_y)
 
-        # Get the tile at the item's current position.
-        item_tile = self.get_tile(item_x, item_y)
+# create the parent class for the food and water
+class Resource:
+    def init(self, x, y):
+        self.x = x
+        self.y = y
+        self.is_eaten = False # is the food/water eaten?
+        self.is_drunk = False # is the water drunk?
+        self.color = (0, 0, 0) # the color of the food/water (black)
 
-        # Get the valid actions for the current state.
-        valid_actions = self.get_valid_actions(state_space)
+# create the food class
+class Food(Resource):
+    def init(self, x, y):
+        super().init(x, y)
+        self.color = (255, 0, 0) # the color of the food (red)
 
-        # Check if the action is valid.
-        if action not in valid_actions:
-            return state, 0, False
+# create the water class
+class Water(Resource):
+    def init(self, x, y):
+        super().init(x, y)
+        self.color = (0, 0, 255) # the color of the water (blue)
 
-        # Move the gnome to its new position.
-        dx, dy = 0, 0
-        if action == 0:
-            dx = -1
-        elif action == 1:
-            dx = 1
-        elif action == 2:
-            dy = -1
-        elif action == 3:
-            dy = 1
-        # self.gnome.move(dx, dy)
-        self.gnome.act(
-            action
-            )  # perform an action based on the current state
-        # Get the new state of the environment.
-        new_state = self.get_state()
-
-        # Calculate the reward for the current state.
-        reward = self.gnome.get_reward(new_state, False)
-
-        # Check if the environment has been terminated. Make terminated True if the gnome has reached the goal.
-        terminated = self.gnome.has_reached_goal(new_state)
-        # Return the new state, the reward, whether the environment has been terminated, and the valid actions.
-        return new_state, reward, False, valid_actions
+# create the tree class
+class Tree(Resource):
+    def init(self, x, y):
+        super().init(x, y)
+        self.color = (0, 255, 0) # the color of the tree (green)
 
 
 class Policies:
@@ -658,7 +653,7 @@ class Game:
         :return: _description_
         :rtype: _type_
         """
-        new_state, reward, done = self.environment.step(action)
+        new_state, reward, done = self.environment.step(action, self.gnome)
 
         # Return the new state, reward, and is_done flag.
         return new_state, reward, done
@@ -674,7 +669,7 @@ class Game:
         After rendering the tiles, the method gets the screen coordinates for the gnome, chooses the color for the gnome based on the type of item it is carrying, creates a rectangle object representing the gnome, and draws the gnome to the screen. Finally, it updates the screen using the pygame.display.flip() method.
         """
         # Get the current state of the environment.
-        state = environment.get_state()
+        state = environment.get_state(gnome)
         state_space = environment.get_state_space(
             state
         )  # get the state space for the current state
@@ -772,6 +767,62 @@ class Game:
         self.render(screen, environment, gnome)
 
 
+def test_game():
+    # Create an instance of the Environment class with the specified width, height, and tile size.
+    gnome = Gnome(x=0, y=0, environment=None)
+    environment = Environment(width=20, height=20, tile_size=32, gnome=gnome)
+
+    # Create an instance of the Gnome class with the specified starting position and the environment object.
+    gnome = Gnome(x=10, y=10, environment=environment)
+
+    # Create an instance of the Game class with the environment and gnome objects.
+    game = Game(environment=environment, gnome=gnome)
+
+    # Initialize Pygame.
+    pygame.init()
+
+    # Set the screen size.
+    screen = pygame.display.set_mode((environment.width * environment.tile_size, environment.height * environment.tile_size))
+
+    # Create the game world by generating the tiles.
+    # Create the game world.
+    environment.create(gnome=gnome)
+
+
+    # Initialize the clock.
+    clock = pygame.time.Clock()
+
+    # Run the game loop.
+    while not game.is_done:
+        # Get the current state of the environment.
+        state = environment.get_state(gnome=gnome)
+
+        # Get the action from the agent.
+        action = gnome.act(state, gnome)
+
+        # Take the action in the environment.
+        new_state, reward, done = game.take_action(state, action)
+
+        # Update the game state.
+        game.state = new_state
+        game.reward = reward
+        game.is_done = done
+
+        # Render the environment.
+        game.render(screen=screen, environment=environment, gnome=gnome)
+
+        # Update the screen.
+        pygame.display.update()
+
+        # Wait for 1/30th of a second.
+        clock.tick(30)
+
+    # Close the window.
+    pygame.quit()
+
+
+
+
 def main():
     width = 10
     height = 10
@@ -834,4 +885,5 @@ def main():
 
 # Run the main function.
 if __name__ == "__main__":
-    main()
+    # main()
+    test_game()

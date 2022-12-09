@@ -409,6 +409,42 @@
         "documentation": {}
     },
     {
+        "label": "Resource",
+        "kind": 6,
+        "importPath": "src.full_game",
+        "description": "src.full_game",
+        "peekOfCode": "class Resource:\n    def init(self, x, y):\n        self.x = x\n        self.y = y\n        self.is_eaten = False # is the food/water eaten?\n        self.is_drunk = False # is the water drunk?\n        self.color = (0, 0, 0) # the color of the food/water (black)\n# create the food class\nclass Food(Resource):\n    def init(self, x, y):",
+        "detail": "src.full_game",
+        "documentation": {}
+    },
+    {
+        "label": "Food",
+        "kind": 6,
+        "importPath": "src.full_game",
+        "description": "src.full_game",
+        "peekOfCode": "class Food(Resource):\n    def init(self, x, y):\n        super().init(x, y)\n        self.color = (255, 0, 0) # the color of the food (red)\n# create the water class\nclass Water(Resource):\n    def init(self, x, y):\n        super().init(x, y)\n        self.color = (0, 0, 255) # the color of the water (blue)\n# create the tree class",
+        "detail": "src.full_game",
+        "documentation": {}
+    },
+    {
+        "label": "Water",
+        "kind": 6,
+        "importPath": "src.full_game",
+        "description": "src.full_game",
+        "peekOfCode": "class Water(Resource):\n    def init(self, x, y):\n        super().init(x, y)\n        self.color = (0, 0, 255) # the color of the water (blue)\n# create the tree class\nclass Tree(Resource):\n    def init(self, x, y):\n        super().init(x, y)\n        self.color = (0, 255, 0) # the color of the tree (green)\nclass Policies:",
+        "detail": "src.full_game",
+        "documentation": {}
+    },
+    {
+        "label": "Tree",
+        "kind": 6,
+        "importPath": "src.full_game",
+        "description": "src.full_game",
+        "peekOfCode": "class Tree(Resource):\n    def init(self, x, y):\n        super().init(x, y)\n        self.color = (0, 255, 0) # the color of the tree (green)\nclass Policies:\n    def __init__(self):\n        pass\n    def get_reward(self, state: np.ndarray, action: int):\n        if action == 0:  # move left\n            if state[0, 1] == 2:  # water",
+        "detail": "src.full_game",
+        "documentation": {}
+    },
+    {
         "label": "Policies",
         "kind": 6,
         "importPath": "src.full_game",
@@ -423,6 +459,15 @@
         "importPath": "src.full_game",
         "description": "src.full_game",
         "peekOfCode": "class Game:\n    \"\"\"\n    Game The Game class is responsible for running the game loop. It will take the action returned by the agent, pass it to the environment, and then render the environment. It will also keep track of the score and the number of steps taken.\n    _extended_summary_\n    \"\"\"\n    def __init__(self, environment: Environment, gnome: Gnome):\n        self.environment = environment\n        self.gnome = gnome\n        self.tile_size = 32  # the size of each tile, in pixels\n        self.is_done = False  # when the game is over, set this to True",
+        "detail": "src.full_game",
+        "documentation": {}
+    },
+    {
+        "label": "test_game",
+        "kind": 2,
+        "importPath": "src.full_game",
+        "description": "src.full_game",
+        "peekOfCode": "def test_game():\n    # Create an instance of the Environment class with the specified width, height, and tile size.\n    gnome = Gnome(x=0, y=0, environment=None)\n    environment = Environment(width=20, height=20, tile_size=32, gnome=gnome)\n    # Create an instance of the Gnome class with the specified starting position and the environment object.\n    gnome = Gnome(x=10, y=10, environment=environment)\n    # Create an instance of the Game class with the environment and gnome objects.\n    game = Game(environment=environment, gnome=gnome)\n    # Initialize Pygame.\n    pygame.init()",
         "detail": "src.full_game",
         "documentation": {}
     },
