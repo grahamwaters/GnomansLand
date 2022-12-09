@@ -7,6 +7,7 @@ from typing import List, Tuple, Any
 import time
 
 
+
 # Initialize Pygame.
 pygame.init()
 
@@ -51,36 +52,107 @@ class Gnome:
         self.is_dead = False  # the gnome is not dead yet
         self.gamma = 0.9  # the discount factor for the Bellman equation
         self.environment = environment  # the environment the gnome is in
+        try:
+            self.q_table = np.zeros(
+                (self.environment.width, self.environment.height, 4)
+            ) # the Q-table for the environment
+        except:
+            self.q_table = np.array([]) # note: this is a placeholder for the Q-table
+        self.epsilon = 0.1  # the probability of choosing a random action
+        self.alpha = 0.1  # the learning rate
+        self.reward = 0  # the reward for the current state
+        self.new_reward = 0  # the reward for the new state
+        self.action = 0  # the action taken by the gnome
+        self.new_action = 0  # the new action taken by the gnome
+        self.state = 0  # the current state of the environment
+        self.new_state = 0  # the new state of the environment
+        self.actions = [0, 1, 2, 3]  # the actions the gnome can take
+        self.new_actions = [0, 1, 2, 3]  # the new actions the gnome can take
+        self.action_dict = {
+            0: "left",
+            1: "right",
+            2: "up",
+            3: "down",
+        }  # the dictionary of actions the gnome can take
+
+    #^ Use Epsilon-Greedy Policy
+    def q_learning_policy(self, state: np.ndarray, actions):
+        # Get the Q-table from the environment.
+        q_table = self.q_table
+        # Use the epsilon-greedy policy to choose the best action.
+        if np.random.random() < self.epsilon:
+            # Choose a random action.
+            action = np.random.choice(actions)
+        else:
+            # Choose the best action according to the Q-table.
+            q_values = q_table[self.x, self.y, actions]
+            action = actions[np.argmax(q_values)]
+
+        return action
+
 
     # * Reinforcement Learning Methods
-    def q_learning_policy(
+    def q_learning_policy_nongreedy(
         self, state: np.ndarray, actions, environment
     ):  # -> int:
-        # Initialize the Q-values for each action to 0.
-        q_values = defaultdict(lambda: 0)
+        """
+        Use the Q-learning policy to choose the best action to take in the current state, given the current Q-table. This method is called by the act() method.
+        We know that the gnome is currently situated at self.x, self.y. We also know that the gnome can take one of the following actions:
+            0 = move left
+            1 = move right
+            2 = move up
+            3 = move down
+        :param state: The current state of the environment.
+        :param actions: The valid actions that the gnome can take in the current state.
+        :return: The best action to take in the current state.
+        """
+        # Get the Q-table from the environment.
+        q_table = self.q_table
 
-        # Loop through each valid action.
+        # Get the current position of the gnome.
+        x, y, _ = state
+
+        # Set the best action to None.
+        best_action = None
+
+        # Set the best action value to -infinity.
+        best_action_value = -np.inf
+
+        # Loop through all the possible actions.
         for action in actions:
-            # Get the next state and reward if the gnome takes the current action.
-            next_state, reward, is_done = self.environment.step(action, state) # * note: this is the environment.step() method, not the gnome.step() method.
-            if is_done:
-                # If the gnome has reached the goal, set the Q-value for the current action to the reward.
-                q_values[action] = reward
-                continue
-            # Calculate the Q-value for the current action using the Bellman equation.
-            # Q(s, a) = reward + gamma * max(Q(s', a'))
-            q_values[action] = reward + self.gamma * max(
-                q_values[next_state, a]
-                for a in self.environment.get_valid_actions(next_state)
-            )
 
-        # Choose the action with the highest Q-value.
-        best_action = max(q_values, key=q_values.get)
+            # Get the Q-value for the current state and action.
+            q_value = q_table[x, y, action]
 
+            # Check if the Q-value for the current action is better than the best action value.
+            if q_value > best_action_value:
+                # Update the best action value.
+                best_action_value = q_value
+
+                # Update the best action.
+                best_action = action
+
+        # Check if the best action value is -infinity.
+        if best_action_value == -np.inf:
+            # Choose a random action from the list of valid actions.
+            best_action = random.choice(actions)
+
+        # Return the best action, and the reward for the current state.
         return best_action
 
+    def q_learning_update(self, state, action, reward, new_state, new_action):
+        new_state = new_state[0] # note: this is a hack to get the new state to work with the Q-table.
 
-        return best_action
+        # Get the Q-table from the environment.
+        q_table = self.q_table
+        # update the Q-table
+        q_table[state[0], state[1], action] = (
+            (1 - self.alpha) * q_table[state[0], state[1], action]
+            + self.alpha * (reward + self.gamma * q_table[new_state[0], new_state[1], new_action])
+        )
+        # update the Q-table in the environment, and the gnome object
+        self.environment.q_table = q_table # note: this is redundant, but it's here for clarity?
+        self.q_table = q_table # note: this is redundant, but it's here for clarity?
 
     def has_reached_goal(self, new_state: np.ndarray):  # -> bool:
         """
@@ -116,15 +188,80 @@ class Gnome:
         self.x += dx  # move the gnome in the x direction by dx
         self.y += dy  # move the gnome in the y direction by dy
 
+    # def act(self, state: np.ndarray, environment: "Environment"):
+    #     # Get the valid actions in the current state.
+    #     actions = environment.get_valid_actions(state)
+
+    #     # Use the Q-learning policy to choose the best action.
+    #     action = self.q_learning_policy(state, actions, environment)
+
+    #     # Take the chosen action.
+    #     # dx = 0
+    #     # dy = 0
+    #     # if action == 0:
+    #     #     dx = -1
+    #     # elif action == 1:
+    #     #     dx = 1
+    #     # elif action == 2:
+    #     #     dy = -1
+    #     # elif action == 3:
+    #     #     dy = 1
+    #     # else:
+    #     #     raise ValueError("Invalid action chosen.")
+    #     # self.move(dx, dy)
+
+
+    #     # update the state, action, and reward variables
+    #     self.state = state
+    #     self.action = action
+    #     self.reward = environment.get_reward(state, action)
+
+
+
+    #     # Use the step() method to get the new state and reward after taking the chosen action.
+    #     new_state, reward, is_done = environment.step(action, state)
+
+    #     # Use the q_learning_policy() method to choose the best action in the new state.
+    #     new_action = self.q_learning_policy(new_state, actions, environment)
+
+    #     # Update the new_state, new_action, and new_reward variables.
+    #     self.new_state = new_state
+    #     self.new_action = new_action
+    #     self.new_reward = reward
+
+    #     # Update the q-table using the q_learning_update() method.
+    #     self.q_learning_update(self.state, self.action, self.reward, self.new_state, self.new_action)
+
+    #     # update the q-table
+    #     self.q_learning_update(self.state, self.action, self.reward, self.new_state, self.new_action)
+
+    #     return action # * note: this is the action that the gnome takes in the environment.
+
     def act(self, state: np.ndarray, environment: "Environment"):
         # Get the valid actions in the current state.
         actions = environment.get_valid_actions(state)
 
         # Use the Q-learning policy to choose the best action.
-        action = self.q_learning_policy(state, actions, environment)
+        action = self.q_learning_policy(state, actions)
+
+        # Take the action in the environment and get the new state.
+        new_state = environment.step(action, state)
+
+        # Use the Q-learning policy to choose the best action in the new state.
+        new_actions = environment.get_valid_actions(new_state)
+        new_action = self.q_learning_policy(new_state, new_actions)
+
+        # Update the state, action, and reward variables.
+        self.state = state
+        self.action = action
+        self.reward = environment.get_reward(state, action)
+        self.new_state = new_state
+        self.new_action = new_action
+
+        # Update the Q-table.
+        self.q_learning_update(self.state, self.action, self.reward, self.new_state, self.new_action)
 
         return action # * note: this is the action that the gnome takes in the environment.
-
     def get_valid_actions(self, state: np.ndarray):# -> List[int]:
         """
         Get the valid actions that the gnome can take in the current state.
@@ -224,15 +361,23 @@ class Agent:
         self.gamma = 0.9
         self.epsilon = 0.1
 
-    def act(self, state: np.ndarray):
+    def act(self, state: np.ndarray, environment):
+        """
+        This method is called when the gnome needs to take an action in the game world.
+        The gnome uses the Q-learning policy to choose the best action to take in the current state.
+
+        :param state: The current state of the environment.
+        :param environment: The environment the gnome is in.
+        """
         # Get the valid actions that the gnome can take in the current state.
-        actions = self.environment.get_valid_actions(state)
+        actions = environment.get_valid_actions(state)
 
-        # Use the Q-learning policy to determine the next action for the gnome.
-        action = self.q_learning_policy(state, actions)
+        # Use the Q-learning policy to choose the best action.
+        action = self.q_learning_policy(state, actions, environment)
 
-        # Take the action determined by the Q-learning policy.
-        self.move(*action)
+        # Return the chosen action.
+        return action
+
 
     def learn(self, state: int, action: int, gnome: Gnome):
         # Get the reward for the given state and action
@@ -574,10 +719,66 @@ class Environment:
         # Return the new state, reward, and is_done flag.
         return new_state, reward, is_done # this has the reward set as 0.0
 
+    def get_reward(self, state: np.ndarray, action: int):
+        """
+        Get the reward for the current state and action.
+        :param state: The current state of the environment.
+        :param action: The action taken by the agent (gnome) in the environment.
+        :return: The reward for the current state and action.
+        """
+        # Get the x- and y-coordinates of the gnome.
+        x, y = state[0], state[1]
+
+        # Get the type of tile the gnome is on.
+        tile = state[2]
+
+        # Initialize the reward to 0.
+        reward = 0
+
+        # Check the type of tile the gnome is on.
+        if tile == 1:
+            # If the gnome is on a grass tile, the reward is 0.
+            reward = 0
+        elif tile == 2:
+            # If the gnome is on a water tile, the reward is -10.
+            reward = -10
+        elif tile == 3:
+            # If the gnome is on a tree tile, the reward is -1.
+            reward = -1
+        elif tile == 4:
+            # If the gnome is on a goal tile, the reward is 100.
+            reward = 100
+
+        return reward
 
     def apply_action(self, action, gnome):
         # Apply the action to the environment.
         x, y, tile = self.get_state(gnome)
+        # Get the agent's current position.
+        x, y = self.get_agent_position()
+
+        # if moving would put the agent out of bounds, don't move the agent in that direction.
+        if action == 0 and x == 0:  # move left if not at left edge
+            return self.get_state(gnome), 0.0, False
+        elif action == 1 and x == self.width - 1:  # move right if not at right edge
+            return self.get_state(gnome), 0.0, False
+        elif action == 2 and y == 0:  # move up if not at top edge
+            return self.get_state(gnome), 0.0, False
+        elif action == 3 and y == self.height - 1:  # move down if not at bottom edge
+            return self.get_state(gnome), 0.0, False
+
+        # I could have the agent learn to avoid the edges of the grid, but I don't want to do that.
+        # I want the agent to learn to move to the goal, not to avoid the edges of the grid.
+
+        # Get the reward for the current state and action.
+        reward = self.get_reward(self.get_state(gnome), action)
+
+        # Check if the agent has reached the goal.
+        if tile == 4:
+            # The agent has reached the goal.
+            print("The gnome has reached the goal!")
+            return self.get_state(gnome), reward, False
+
         # Update the position of the agent in the environment.
         if action == 0:  # move left
             x -= 1
@@ -589,7 +790,9 @@ class Environment:
             y += 1
         # Check if the agent has moved out of bounds.
         if x < 0 or x >= self.width or y < 0 or y >= self.height:
-            return self.get_state(gnome), -1.0, True
+            #&return self.get_state(gnome), -1.0, True
+            # we don't want to end the game if the agent moves out of bounds, just don't let the agent move out of bounds.
+            return self.get_state(gnome), 0.0, False
         # Update the position of the agent in the environment.
         self.set_agent_position(x, y)
         # Return the new state, reward, and is_done flag.
@@ -839,15 +1042,10 @@ def test_game():
 
         # Take a step in the environment.
         state, reward, is_done = environment.step(action, gnome)
-        print(action) # print the action
-
-        # Take the action in the environment.
-        new_state, reward, done = game.take_action(state, action)
+        #print(action) # print the action
 
         # Update the game state.
-        game.state = new_state
-        game.reward = reward
-        game.is_done = done
+        game.is_done = is_done
 
         # Render the environment.
         game.render(screen=screen, environment=environment, gnome=gnome)
