@@ -3,7 +3,7 @@ import random
 from gnome import Gnome
 from environment import Environment
 from policies import get_reward
-from game import Game
+from v1.game import Game
 
 
 

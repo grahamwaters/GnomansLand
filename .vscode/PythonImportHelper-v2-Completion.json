@@ -110,6 +110,15 @@
         "documentation": {}
     },
     {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
         "label": "Gnome",
         "importPath": "gnome",
         "description": "gnome",
@@ -159,10 +168,10 @@
     },
     {
         "label": "Game",
-        "importPath": "game",
-        "description": "game",
+        "importPath": "v1.game",
+        "description": "v1.game",
         "isExtraImport": true,
-        "detail": "game",
+        "detail": "v1.game",
         "documentation": {}
     },
     {
@@ -375,91 +384,82 @@
     {
         "label": "Gnome",
         "kind": 6,
-        "importPath": "src.game",
-        "description": "src.game",
+        "importPath": "src.full_game",
+        "description": "src.full_game",
         "peekOfCode": "class Gnome:\n    \"\"\"\n    The Gnome class represents the gnome agent in the game.\n    The Gnome class has the following attributes and methods:\n        x: The x-coordinate of the gnome's position.\n        y: The y-coordinate of the gnome's position.\n        carrying: The type of item the gnome is currently carrying. This can be None if the gnome is not carrying any items.\n        __init__(): The constructor for the Gnome class. This method initializes the gnome with a starting position and sets carrying to None.\n        move(): This method moves the gnome to a new position in the game world.\n        act(): This method is called when the gnome needs to take an action in the game world, such as moving or picking up an item.",
-        "detail": "src.game",
+        "detail": "src.full_game",
         "documentation": {}
     },
     {
         "label": "Agent",
         "kind": 6,
-        "importPath": "src.game",
-        "description": "src.game",
+        "importPath": "src.full_game",
+        "description": "src.full_game",
         "peekOfCode": "class Agent:\n    \"\"\"\n    The Agent class represents an agent that uses reinforcement learning to learn a policy for the gnome to follow.\n    The Agent class has the following attributes and methods:\n        policy: A dictionary that maps state-action pairs to probabilities of taking the action in the state.\n        alpha: The learning rate used in the learning algorithm.\n        gamma: The discount factor used in the learning algorithm.\n        epsilon: The exploration rate used in the learning algorithm.\n        __init__(): The constructor for the Agent class. This method initializes the agent with default values for the policy, learning rate, discount factor, and exploration rate.\n        act(): This method is called when the agent needs to take an action in the environment. It uses the learned policy to determine the action to take.",
-        "detail": "src.game",
+        "detail": "src.full_game",
         "documentation": {}
     },
     {
         "label": "Environment",
         "kind": 6,
-        "importPath": "src.game",
-        "description": "src.game",
+        "importPath": "src.full_game",
+        "description": "src.full_game",
         "peekOfCode": "class Environment:\n    \"\"\"\n    The Environment class represents the game world and its objects and features.\n    The Environment class has the following attributes and methods:\n        width: The width of the environment, in tiles.\n        height: The height of the environment, in tiles.\n        tile_size: The size of each tile, in pixels.\n        tiles: A 2D array of tiles representing the game world.\n        __init__(): The constructor for the Environment class. This method initializes the environment with the specified width, height, and tile size, and creates an empty array of tiles.\n        create(): This method generates the tiles for the game world.",
-        "detail": "src.game",
+        "detail": "src.full_game",
         "documentation": {}
     },
     {
         "label": "Policies",
         "kind": 6,
-        "importPath": "src.game",
-        "description": "src.game",
+        "importPath": "src.full_game",
+        "description": "src.full_game",
         "peekOfCode": "class Policies:\n    def __init__(self):\n        pass\n    def get_reward(self, state: np.ndarray, action: int):\n        if action == 0:  # move left\n            if state[0, 1] == 2:  # water\n                return -1.0\n            elif state[0, 1] == 5:  # mountain\n                return -0.5\n            else:",
-        "detail": "src.game",
+        "detail": "src.full_game",
         "documentation": {}
     },
     {
         "label": "Game",
         "kind": 6,
-        "importPath": "src.game",
-        "description": "src.game",
-        "peekOfCode": "class Game:\n    def __init__(self, environment: Environment, gnome: Gnome):\n        self.environment = environment\n        self.gnome = gnome\n        self.tile_size = 32  # the size of each tile, in pixels\n        self.is_done = False  # when the game is over, set this to True\n    def take_action(\n        self, state: np.ndarray, action: int\n    ):  #  -> Tuple[np.ndarray, int, bool, List[int]]:\n        \"\"\"",
-        "detail": "src.game",
+        "importPath": "src.full_game",
+        "description": "src.full_game",
+        "peekOfCode": "class Game:\n    \"\"\"\n    Game The Game class is responsible for running the game loop. It will take the action returned by the agent, pass it to the environment, and then render the environment. It will also keep track of the score and the number of steps taken.\n    _extended_summary_\n    \"\"\"\n    def __init__(self, environment: Environment, gnome: Gnome):\n        self.environment = environment\n        self.gnome = gnome\n        self.tile_size = 32  # the size of each tile, in pixels\n        self.is_done = False  # when the game is over, set this to True",
+        "detail": "src.full_game",
         "documentation": {}
     },
     {
         "label": "main",
         "kind": 2,
-        "importPath": "src.game",
-        "description": "src.game",
-        "peekOfCode": "def main():\n    width = 10\n    height = 10\n    tile_size = 32\n    # Create an empty environment array.\n    gnome = Gnome(0, 0)\n    environment = Environment(width, height, tile_size, gnome)\n    # Create a new Game object and pass in the environment and gnome objects.\n    game = Game(environment, gnome)\n    # Reset the game state.",
-        "detail": "src.game",
-        "documentation": {}
-    },
-    {
-        "label": "main2",
-        "kind": 2,
-        "importPath": "src.game",
-        "description": "src.game",
-        "peekOfCode": "def main2():\n    # Create a game object.\n    game = Game()\n    # Create a screen with the specified dimensions.\n    screen = pygame.display.set_mode((game.width * tile_size, game.height * tile_size))\n    # Create the environment and gnome objects.\n    environment = game.create_environment()\n    gnome = game.create_gnome()\n    # Set the initial state of the environment.\n    state = environment.get_state()",
-        "detail": "src.game",
+        "importPath": "src.full_game",
+        "description": "src.full_game",
+        "peekOfCode": "def main():\n    width = 10\n    height = 10\n    tile_size = 32\n    # Create an empty environment array.\n    gnome = Gnome(0, 0, None)\n    environment = Environment(width, height, tile_size, gnome)\n    # Re-assign the environment to the gnome.\n    gnome.environment = environment\n    # Create a new Game object and pass in the environment and gnome objects.",
+        "detail": "src.full_game",
         "documentation": {}
     },
     {
         "label": "screen_width",
         "kind": 5,
-        "importPath": "src.game",
-        "description": "src.game",
+        "importPath": "src.full_game",
+        "description": "src.full_game",
         "peekOfCode": "screen_width = 800\nscreen_height = 600\n# Create the game world.\ntile_size = 32\nclass Gnome:\n    \"\"\"\n    The Gnome class represents the gnome agent in the game.\n    The Gnome class has the following attributes and methods:\n        x: The x-coordinate of the gnome's position.\n        y: The y-coordinate of the gnome's position.",
-        "detail": "src.game",
+        "detail": "src.full_game",
         "documentation": {}
     },
     {
         "label": "screen_height",
         "kind": 5,
-        "importPath": "src.game",
-        "description": "src.game",
+        "importPath": "src.full_game",
+        "description": "src.full_game",
         "peekOfCode": "screen_height = 600\n# Create the game world.\ntile_size = 32\nclass Gnome:\n    \"\"\"\n    The Gnome class represents the gnome agent in the game.\n    The Gnome class has the following attributes and methods:\n        x: The x-coordinate of the gnome's position.\n        y: The y-coordinate of the gnome's position.\n        carrying: The type of item the gnome is currently carrying. This can be None if the gnome is not carrying any items.",
-        "detail": "src.game",
+        "detail": "src.full_game",
         "documentation": {}
     },
     {
         "label": "tile_size",
         "kind": 5,
-        "importPath": "src.game",
-        "description": "src.game",
+        "importPath": "src.full_game",
+        "description": "src.full_game",
         "peekOfCode": "tile_size = 32\nclass Gnome:\n    \"\"\"\n    The Gnome class represents the gnome agent in the game.\n    The Gnome class has the following attributes and methods:\n        x: The x-coordinate of the gnome's position.\n        y: The y-coordinate of the gnome's position.\n        carrying: The type of item the gnome is currently carrying. This can be None if the gnome is not carrying any items.\n        __init__(): The constructor for the Gnome class. This method initializes the gnome with a starting position and sets carrying to None.\n        move(): This method moves the gnome to a new position in the game world.",
-        "detail": "src.game",
+        "detail": "src.full_game",
         "documentation": {}
     },
     {
@@ -541,6 +541,222 @@
         "description": "src.rules_and_requirements",
         "peekOfCode": "clock = pygame.time.Clock()",
         "detail": "src.rules_and_requirements",
+        "documentation": {}
+    },
+    {
+        "label": "Creature",
+        "kind": 6,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "class Creature:\n    def init(self, x, y):\n        self.x = x\n        self.y = y\n        self.speed = 1\n        self.hunger = 0\n        self.thirst = 0\n        self.sleeping = False # is the creature sleeping?\n        self.is_dead = False # is the creature dead?\n        # the creature is dark blue when it is awake",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "Resource",
+        "kind": 6,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "class Resource:\n    def init(self, x, y):\n        self.x = x\n        self.y = y\n        self.is_eaten = False # is the food/water eaten?\n        self.is_drunk = False # is the water drunk?\n        self.color = (0, 0, 0) # the color of the food/water (black)\n# create the food class\nclass Food(Resource):\n    def init(self, x, y):",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "Food",
+        "kind": 6,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "class Food(Resource):\n    def init(self, x, y):\n        super().init(x, y)\n        self.color = (255, 0, 0) # the color of the food (red)\n# create the water class\nclass Water(Resource):\n    def init(self, x, y):\n        super().init(x, y)\n        self.color = (0, 0, 255) # the color of the water (blue)\n# create the tree class",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "Water",
+        "kind": 6,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "class Water(Resource):\n    def init(self, x, y):\n        super().init(x, y)\n        self.color = (0, 0, 255) # the color of the water (blue)\n# create the tree class\nclass Tree(Resource):\n    def init(self, x, y):\n        super().init(x, y)\n        self.color = (0, 255, 0) # the color of the tree (green)\n# create the creature",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "Tree",
+        "kind": 6,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "class Tree(Resource):\n    def init(self, x, y):\n        super().init(x, y)\n        self.color = (0, 255, 0) # the color of the tree (green)\n# create the creature\ncreature = Creature()\n# create the food\nfood = Food()\n# create the water\nwater = Water()",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "SCREEN_WIDTH",
+        "kind": 5,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "SCREEN_WIDTH = 800\nSCREEN_HEIGHT = 600\n# Set grid dimensions\nGRID_WIDTH = 10\nGRID_HEIGHT = 10\n# Set tile size\nTILE_SIZE = 40\n#* Agent Characteristics\nclass Creature:\n    def init(self, x, y):",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "SCREEN_HEIGHT",
+        "kind": 5,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "SCREEN_HEIGHT = 600\n# Set grid dimensions\nGRID_WIDTH = 10\nGRID_HEIGHT = 10\n# Set tile size\nTILE_SIZE = 40\n#* Agent Characteristics\nclass Creature:\n    def init(self, x, y):\n        self.x = x",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "GRID_WIDTH",
+        "kind": 5,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "GRID_WIDTH = 10\nGRID_HEIGHT = 10\n# Set tile size\nTILE_SIZE = 40\n#* Agent Characteristics\nclass Creature:\n    def init(self, x, y):\n        self.x = x\n        self.y = y\n        self.speed = 1",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "GRID_HEIGHT",
+        "kind": 5,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "GRID_HEIGHT = 10\n# Set tile size\nTILE_SIZE = 40\n#* Agent Characteristics\nclass Creature:\n    def init(self, x, y):\n        self.x = x\n        self.y = y\n        self.speed = 1\n        self.hunger = 0",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "TILE_SIZE",
+        "kind": 5,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "TILE_SIZE = 40\n#* Agent Characteristics\nclass Creature:\n    def init(self, x, y):\n        self.x = x\n        self.y = y\n        self.speed = 1\n        self.hunger = 0\n        self.thirst = 0\n        self.sleeping = False # is the creature sleeping?",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "creature",
+        "kind": 5,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "creature = Creature()\n# create the food\nfood = Food()\n# create the water\nwater = Water()\n# create the tree\ntree = Tree()\n# create the list of resources\nresources = [food, water, tree]\n# create the list of creatures",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "food",
+        "kind": 5,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "food = Food()\n# create the water\nwater = Water()\n# create the tree\ntree = Tree()\n# create the list of resources\nresources = [food, water, tree]\n# create the list of creatures\ncreatures = [creature]\n# create the list of all the objects",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "water",
+        "kind": 5,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "water = Water()\n# create the tree\ntree = Tree()\n# create the list of resources\nresources = [food, water, tree]\n# create the list of creatures\ncreatures = [creature]\n# create the list of all the objects\nobjects = [creature, food, water, tree]\n# create the list of all the objects that are not the creature",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "tree",
+        "kind": 5,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "tree = Tree()\n# create the list of resources\nresources = [food, water, tree]\n# create the list of creatures\ncreatures = [creature]\n# create the list of all the objects\nobjects = [creature, food, water, tree]\n# create the list of all the objects that are not the creature\nobjects_not_creature = [food, water, tree]\n# game loop",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "resources",
+        "kind": 5,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "resources = [food, water, tree]\n# create the list of creatures\ncreatures = [creature]\n# create the list of all the objects\nobjects = [creature, food, water, tree]\n# create the list of all the objects that are not the creature\nobjects_not_creature = [food, water, tree]\n# game loop\nwhile True:\n    # check for events",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "creatures",
+        "kind": 5,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "creatures = [creature]\n# create the list of all the objects\nobjects = [creature, food, water, tree]\n# create the list of all the objects that are not the creature\nobjects_not_creature = [food, water, tree]\n# game loop\nwhile True:\n    # check for events\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "objects",
+        "kind": 5,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "objects = [creature, food, water, tree]\n# create the list of all the objects that are not the creature\nobjects_not_creature = [food, water, tree]\n# game loop\nwhile True:\n    # check for events\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            pygame.quit()\n            sys.exit()",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "objects_not_creature",
+        "kind": 5,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "objects_not_creature = [food, water, tree]\n# game loop\nwhile True:\n    # check for events\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            pygame.quit()\n            sys.exit()\n    # draw the background\n    screen.fill((255, 255, 255))",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "screen",
+        "kind": 5,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))\n# Create environment rect\nenv_rect = pygame.Rect(0, 0, GRID_WIDTH * TILE_SIZE, GRID_HEIGHT * TILE_SIZE)\n# Define probabilities for each tile type\ntile_probs = {\n\"grass\": 0.8,\n\"water\": 0.1,\n\"tree\": 0.1\n}\n# Check that tile probabilities sum to 1",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "env_rect",
+        "kind": 5,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "env_rect = pygame.Rect(0, 0, GRID_WIDTH * TILE_SIZE, GRID_HEIGHT * TILE_SIZE)\n# Define probabilities for each tile type\ntile_probs = {\n\"grass\": 0.8,\n\"water\": 0.1,\n\"tree\": 0.1\n}\n# Check that tile probabilities sum to 1\nassert abs(sum(tile_probs.values()) - 1.0) < 1e-6, \"Tile probabilities must sum to 1\"\n# Define colors for each tile type",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "tile_probs",
+        "kind": 5,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "tile_probs = {\n\"grass\": 0.8,\n\"water\": 0.1,\n\"tree\": 0.1\n}\n# Check that tile probabilities sum to 1\nassert abs(sum(tile_probs.values()) - 1.0) < 1e-6, \"Tile probabilities must sum to 1\"\n# Define colors for each tile type\ntile_colors = {\n\"grass\": pygame.Color(\"green\"),",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "tile_colors",
+        "kind": 5,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "tile_colors = {\n\"grass\": pygame.Color(\"green\"),\n\"water\": pygame.Color(\"blue\"),\n\"tree\": pygame.Color(\"brown\")\n}\n# To change the code from using random tile generation to using a 2D tile array, you can replace the code that generates the tiles in the game loop with code that reads the tiles from the array. Here is an example of how you might do this:\n# Create 2D array to store tiles\ntiles = np.zeros((GRID_WIDTH, GRID_HEIGHT), dtype=np.int8)\n# Populate array with random tile values\nfor y in range(GRID_HEIGHT):",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "tiles",
+        "kind": 5,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "tiles = np.zeros((GRID_WIDTH, GRID_HEIGHT), dtype=np.int8)\n# Populate array with random tile values\nfor y in range(GRID_HEIGHT):\n    for x in range(GRID_WIDTH):\n        # Choose tile type based on probabilities\n        tile_type = np.random.choice(list(tile_probs.keys()), p=list(tile_probs.values()))\n        # Set tile value in array\n        tiles[x, y] = tile_type\n# Create game loop\nrunning = True",
+        "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "running",
+        "kind": 5,
+        "importPath": "v1.game",
+        "description": "v1.game",
+        "peekOfCode": "running = True\nwhile running:\n    # Process events\n    for event in pygame.event.get():\n        # Check for quit event\n        if event.type == pygame.QUIT:\n            running = False\n    # Clear screen\n    screen.fill((0, 0, 0))\n    # Draw environment",
+        "detail": "v1.game",
         "documentation": {}
     }
 ]
