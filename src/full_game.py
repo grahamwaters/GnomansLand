@@ -123,6 +123,41 @@ class Gnome:
         # Return the new state, reward, and is_done flag.
         return new_state, reward, done
 
+    def get_valid_actions(self, state: np.ndarray):# -> List[int]:
+        """
+        Get the valid actions that the gnome can take in the current state.
+
+        :param state: The current state of the environment.
+        :return: A list of valid actions that the gnome can take in the current state.
+        """
+        # Get the x and y coordinates of the gnome's current position.
+        x, y, _ = state
+
+        # Define the possible actions that the gnome can take.
+        actions = [0, 1, 2, 3]  # 0 = move left, 1 = move right, 2 = move up, 3 = move down
+
+        # Check if moving left would take the gnome out of bounds.
+        if x == 0:
+            # Remove the action for moving left from the list of possible actions.
+            actions.remove(0)
+
+        # Check if moving right would take the gnome out of bounds.
+        if x == self.environment.width - 1:
+            # Remove the action for moving right from the list of possible actions.
+            actions.remove(1)
+
+        # Check if moving up would take the gnome out of bounds.
+        if y == 0:
+            # Remove the action for moving up from the list of possible actions.
+            actions.remove(2)
+
+        # Check if moving down would take the gnome out of bounds.
+        if y == self.environment.height - 1:
+            # Remove the action for moving down from the list of possible actions.
+            actions.remove(3)
+
+        # Return the list of valid actions.
+        return actions
 
 
     def random_move(self):
