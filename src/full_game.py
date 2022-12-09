@@ -460,6 +460,8 @@ class Environment:
         self.gnome_x = random.randint(0, self.width - 1)
         self.gnome_y = random.randint(0, self.height - 1)
 
+        self.goal_x = random.randint(0, self.width - 1)
+        self.goal_y = random.randint(0, self.height - 1)
         # Create an array of tiles to represent the game world.
         self.tiles = np.zeros((width, height), dtype=np.int8)
 
@@ -585,7 +587,23 @@ class Environment:
             self.tiles[self.gnome_x, self.gnome_y],
         )  # return the state as a tuple
 
+    def randomize_agent_position(self):
+        """
+        Randomize the position of the agent in the environment.
+        """
 
+        # Randomize the position of the agent.
+        self.gnome_x = random.randint(0, self.width - 1)
+        self.gnome_y = random.randint(0, self.height - 1)
+
+    def randomize_goal_position(self):
+        """
+        Randomize the position of the item in the environment.
+        """
+
+        # Randomize the position of the item.
+        self.goal_x = random.randint(0, self.width - 1)
+        self.goal_y = random.randint(0, self.height - 1)
 
     def get_state_space(self, state: np.ndarray):  # -> np.ndarray:
         """
@@ -751,6 +769,13 @@ class Environment:
 
         return reward
 
+    def is_agent_at_goal(self,x,y):
+        # Check if the agent is at the goal.
+        if x == self.goal_x and y == self.goal_y:
+            return True
+        else:
+            return False
+
     def apply_action(self, action, gnome):
         # Apply the action to the environment.
         x, y, tile = self.get_state(gnome)
@@ -773,11 +798,6 @@ class Environment:
         # Get the reward for the current state and action.
         reward = self.get_reward(self.get_state(gnome), action)
 
-        # Check if the agent has reached the goal.
-        if tile == 4:
-            # The agent has reached the goal.
-            print("The gnome has reached the goal!")
-            return self.get_state(gnome), reward, False
 
         # Update the position of the agent in the environment.
         if action == 0:  # move left
@@ -793,6 +813,15 @@ class Environment:
             #&return self.get_state(gnome), -1.0, True
             # we don't want to end the game if the agent moves out of bounds, just don't let the agent move out of bounds.
             return self.get_state(gnome), 0.0, False
+                # Check if the agent has reached the goal.
+        if self.is_agent_at_goal(x, y):
+            # The agent has reached the goal.
+            print("The gnome has reached the goal!")
+            # randomize the position of the gnome and the goal
+            self.randomize_agent_position()
+            self.randomize_goal_position()
+            # Return the new state, reward, and is_done flag.
+            return self.get_state(gnome), reward, False
         # Update the position of the agent in the environment.
         self.set_agent_position(x, y)
         # Return the new state, reward, and is_done flag.
