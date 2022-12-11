@@ -1,5 +1,40 @@
 [
     {
+        "label": "gym",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "gym",
+        "description": "gym",
+        "detail": "gym",
+        "documentation": {}
+    },
+    {
+        "label": "spaces",
+        "importPath": "gym",
+        "description": "gym",
+        "isExtraImport": true,
+        "detail": "gym",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
         "label": "pygame",
         "kind": 6,
         "isExtraImport": true,
@@ -67,15 +102,6 @@
         "documentation": {}
     },
     {
-        "label": "numpy",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "numpy",
-        "description": "numpy",
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -90,15 +116,6 @@
         "description": "module_example",
         "isExtraImport": true,
         "detail": "module_example",
-        "documentation": {}
-    },
-    {
-        "label": "random",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "random",
-        "description": "random",
-        "detail": "random",
         "documentation": {}
     },
     {
@@ -172,6 +189,69 @@
         "description": "v1.game",
         "isExtraImport": true,
         "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "Gnome",
+        "kind": 6,
+        "importPath": "gym_env.openai_gym",
+        "description": "gym_env.openai_gym",
+        "peekOfCode": "class Gnome:\n    def __init__(self, x: int, y: int):\n        self.x = x\n        self.y = y\n        self.carrying = None\n        self.is_dead = False\n    def move(self, direction: str):\n        if direction == \"left\":\n            self.x -= 1\n        elif direction == \"right\":",
+        "detail": "gym_env.openai_gym",
+        "documentation": {}
+    },
+    {
+        "label": "Environment",
+        "kind": 6,
+        "importPath": "gym_env.openai_gym",
+        "description": "gym_env.openai_gym",
+        "peekOfCode": "class Environment:\n    def __init__(self, width: int, height: int, tile_size: int, gnome: Gnome):\n        self.width = width\n        self.height = height\n        self.tile_size = tile_size\n        self.gnome = gnome\n        self.gnome_x = random.randint(0, self.width - 1)\n        self.gnome_y = random.randint(0, self.height - 1)\n        self.tiles = np.zeros((width, height), dtype=np.int8)\n        self.step_count = 0",
+        "detail": "gym_env.openai_gym",
+        "documentation": {}
+    },
+    {
+        "label": "GnomanslandEnv",
+        "kind": 6,
+        "importPath": "gym_env.openai_gym",
+        "description": "gym_env.openai_gym",
+        "peekOfCode": "class GnomanslandEnv(gym.Env):\n    \"\"\"\n    The GnomanslandEnv class represents the game world and its objects and features.\n    The GnomanslandEnv class has the following attributes and methods:\n        width: The width of the environment, in tiles.\n        height: The height of the environment, in tiles.\n        gnome: An instance of the Gnome class.\n        tiles: A 2D array of tiles representing the game world.\n        __init__(): The constructor for the GnomanslandEnv class. This method initializes the environment with the specified width, height, and tile size, and creates an empty array of tiles.\n        create(): This method generates the tiles for the game world.",
+        "detail": "gym_env.openai_gym",
+        "documentation": {}
+    },
+    {
+        "label": "action_space",
+        "kind": 5,
+        "importPath": "gym_env.openai_gym",
+        "description": "gym_env.openai_gym",
+        "peekOfCode": "action_space = spaces.Discrete(4)  # 0: left, 1: right, 2: up, 3: down\nobservation_space = spaces.Box(\n    low=0, high=255, shape=(height, width, 3), dtype=np.uint8\n)\nclass GnomanslandEnv(gym.Env):\n    \"\"\"\n    The GnomanslandEnv class represents the game world and its objects and features.\n    The GnomanslandEnv class has the following attributes and methods:\n        width: The width of the environment, in tiles.\n        height: The height of the environment, in tiles.",
+        "detail": "gym_env.openai_gym",
+        "documentation": {}
+    },
+    {
+        "label": "observation_space",
+        "kind": 5,
+        "importPath": "gym_env.openai_gym",
+        "description": "gym_env.openai_gym",
+        "peekOfCode": "observation_space = spaces.Box(\n    low=0, high=255, shape=(height, width, 3), dtype=np.uint8\n)\nclass GnomanslandEnv(gym.Env):\n    \"\"\"\n    The GnomanslandEnv class represents the game world and its objects and features.\n    The GnomanslandEnv class has the following attributes and methods:\n        width: The width of the environment, in tiles.\n        height: The height of the environment, in tiles.\n        gnome: An instance of the Gnome class.",
+        "detail": "gym_env.openai_gym",
+        "documentation": {}
+    },
+    {
+        "label": "env",
+        "kind": 5,
+        "importPath": "gym_env.openai_gym",
+        "description": "gym_env.openai_gym",
+        "peekOfCode": "env = Gnomansland()\n# Reset the environment to get the initial state.\nstate = env.reset()\n# Perform some actions and get the resulting state, reward, and done flag.\nstate, reward, done, _ = env.step(0)\nstate, reward, done, _ = env.step(1)\nstate, reward, done, _ = env.step(2)\n# # Check if the game is over.\n# if done:\n#     # end the game",
+        "detail": "gym_env.openai_gym",
+        "documentation": {}
+    },
+    {
+        "label": "state",
+        "kind": 5,
+        "importPath": "gym_env.openai_gym",
+        "description": "gym_env.openai_gym",
+        "peekOfCode": "state = env.reset()\n# Perform some actions and get the resulting state, reward, and done flag.\nstate, reward, done, _ = env.step(0)\nstate, reward, done, _ = env.step(1)\nstate, reward, done, _ = env.step(2)\n# # Check if the game is over.\n# if done:\n#     # end the game\n#     quit()\n# Here is an outline for the rest of the project:",
+        "detail": "gym_env.openai_gym",
         "documentation": {}
     },
     {
@@ -802,6 +882,15 @@
         "description": "v1.game",
         "peekOfCode": "running = True\nwhile running:\n    # Process events\n    for event in pygame.event.get():\n        # Check for quit event\n        if event.type == pygame.QUIT:\n            running = False\n    # Clear screen\n    screen.fill((0, 0, 0))\n    # Draw environment",
         "detail": "v1.game",
+        "documentation": {}
+    },
+    {
+        "label": "NeoValleyEnvironment",
+        "kind": 6,
+        "importPath": "neovalley",
+        "description": "neovalley",
+        "peekOfCode": "class NeoValleyEnvironment(gym.Env):\n    def __init__(self):\n        # Define the rewards and punishments for each action\n        self.rewards = {\n            'eat_food': 1,\n            'explore': 1,\n            'defend': 1,\n            'fight': 1,\n            'grow_crops': 1,\n            'hunt': 1,",
+        "detail": "neovalley",
         "documentation": {}
     }
 ]
