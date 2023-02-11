@@ -7,8 +7,6 @@
 *** Thanks again! Now go create something AMAZING! :D
 -->
 
-
-
 <!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
@@ -82,10 +80,10 @@ This project started as a simple exercise in the use of pygame and OpenAI to cre
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
+
 ## An Outline of the Game
+
 The gameflow is divided into six phases, each with its own unique and novel challenge for the gnomes. These different challenges for the reinforcement learning agents are to build their mastery (ideally) before the next chapter begins; however, if the population does not learn the necessary skills before the chapter ends, they could be annihilated resulting in a game over scenario.
 
 ![Product Name Screen Shot][panel1]
@@ -102,49 +100,42 @@ The gameflow is divided into six phases, each with its own unique and novel chal
 
 ## We are looking for Contributors in the Following Areas
 
-  * We are looking to build our game in Unity3d. If you are a Unity expert, or are familiar with using ML in Unity3d, then you have a place with us.
+- We are looking to build our game in Unity3d. If you are a Unity expert, or are familiar with using ML in Unity3d, then you have a place with us.
 
-  * Genetic Algorithms are often complex. If you have experience coding these or other machine learning algorithms, then reach out, and we can find a task to assign to you.
-  * Graph optimization
-  * Agent Behavior modification through policy generation
-  * Game Art
-  * Game Story Flow
-  * Repository Maintenance and Organization
-  * Code Security on GitHub
-  * All Machine Learning Experts
-  * Experienced C# Developers for Unity Scripts
+- Genetic Algorithms are often complex. If you have experience coding these or other machine learning algorithms, then reach out, and we can find a task to assign to you.
+- Graph optimization
+- Agent Behavior modification through policy generation
+- Game Art
+- Game Story Flow
+- Repository Maintenance and Organization
+- Code Security on GitHub
+- All Machine Learning Experts
+- Experienced C# Developers for Unity Scripts
 
 ## Some ideas have already been shared, here are three examples:
 
-  * Enable the gnomes to reproduce, resulting in nuclear attribute inheritance (Yes, we will assume the inheritance of acquired characteristics).
-  * We are using shared crowd knowledge to enhance the resource optimization of hunter-gatherers.
-  * We are applying Genetic Algorithms and Stamina/Strength/Motivation to the abilities and lives of the Gnomes.
+- Enable the gnomes to reproduce, resulting in nuclear attribute inheritance (Yes, we will assume the inheritance of acquired characteristics).
+- We are using shared crowd knowledge to enhance the resource optimization of hunter-gatherers.
+- We are applying Genetic Algorithms and Stamina/Strength/Motivation to the abilities and lives of the Gnomes.
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
-
-
-
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 ### Built With (Prerequisites)
 
 The primary tools used for development in this project are python, scikit-learn, pandas, matplotlib, and some others.
 
-* [Python3](https://www.python.org/download/releases/3.0/)
-* PyGame
-* Scikit-Learn
-* Pandas
-* Matplotlib
-* (potentially Unity)
-
+- [Python3](https://www.python.org/download/releases/3.0/)
+- PyGame
+- Scikit-Learn
+- Pandas
+- Matplotlib
+- (potentially Unity)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 To get started setting up your project locally follow these simple steps.
@@ -161,16 +152,14 @@ To get started setting up your project locally follow these simple steps.
 8. Before pushing your commits to your `feature/AmazingFeature` branch, go ahead and run `black` and `flake8` to eliminate any merge issues before they happen. This ensures your work is more likely to be merged into the main branch.
    1. `black (path to your file)`
    2. `flake8 (path to your file)`
-9.  Push to the Branch (`git push origin feature/AmazingFeature`)
+9. Push to the Branch (`git push origin feature/AmazingFeature`)
 10. Open a Pull Request
 11. Wait for an admin to approve your changes and merge them into the main branch.
 
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- USAGE EXAMPLES -->
+
 ## Usage Examples
 
 Usage will be added here once there is a working product to illustrate.
@@ -179,9 +168,8 @@ _For more examples, please refer to the [Documentation](https://github.com/graha
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- ROADMAP -->
+
 ## Our Development Roadmap
 
 - [ ] Create the observation space (environment) for the project.
@@ -189,8 +177,8 @@ _For more examples, please refer to the [Documentation](https://github.com/graha
 - [ ] Place the Gnome in the observation space.
 - [ ] Define a Gnome Abilities Class to denote all possible actions that the agent can take within the observation space.
 - [ ] Use reinforcement learning to generate policies for the gnome that allow it to survive.
-    - [ ] Gather Food
-    - [ ] Avoid Danger
+  - [ ] Gather Food
+  - [ ] Avoid Danger
 
 See the [open issues](https://github.com/grahamwaters/GnomansLand/issues) for a full list of proposed features (and known issues).
 
@@ -213,6 +201,7 @@ In this map you can see features that would have to be created by an agent. Path
 This is the goal, and the dream of this project. It may require Unity eventually.
 
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -222,9 +211,8 @@ Don't forget to give the project a star! Thanks again! Welcome to your Gnome awa
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
@@ -232,35 +220,36 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Contributors
+
 ### Graham Waters [![LinkedIn][linkedin-shield]][grahamwaters-linkedin-url]
+
 ### Nora Abuassaf [![LinkedIn][linkedin-shield]][nura-linkedin-url]
 
-
 <!-- CONTACT -->
+
 ## Contact
+
 If you have questions or concerns about the project, or just want to chat about Gnomes, feel free to reach out to me on my social media.
 
-* Graham Waters - [@grahamwaters01](https://www.linkedin.com/in/grahamwaters01/)
+- Graham Waters - [@grahamwaters01](https://www.linkedin.com/in/grahamwaters01/)
 
-* My Medium Page - [@grahamwaters]([https://grahamwaters.medium.com/)
-
+- My Medium Page - [@grahamwaters]([https://grahamwaters.medium.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- ACKNOWLEDGMENTS -->
+
 ## Acknowledgments
-* https://k3no.medium.com/isometric-grids-in-python-40c0fad54552
-* [Img Shields](https://shields.io)
-* [Read Me Template](https://github.com/othneildrew/Best-README-Template)
+
+- https://k3no.medium.com/isometric-grids-in-python-40c0fad54552
+- [Img Shields](https://shields.io)
+- [Read Me Template](https://github.com/othneildrew/Best-README-Template)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/grahamwaters/GnomansLand.svg?style=for-the-badge
 [contributors-url]: https://github.com/grahamwaters/GnomansLand/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/grahamwaters/GnomansLand.svg?style=for-the-badge
@@ -272,14 +261,12 @@ If you have questions or concerns about the project, or just want to chat about 
 [license-shield]: https://img.shields.io/github/license/grahamwaters/GnomansLand.svg?style=for-the-badge
 [license-url]: https://github.com/grahamwaters/GnomansLand/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-
-[nura-linkedin-url]:https://www.linkedin.com/in/nura-abuassaf/
+[nura-linkedin-url]: https://www.linkedin.com/in/nura-abuassaf/
 [grahamwaters-linkedin-url]: https://linkedin.com/in/grahamwaters01
 [product-screenshot]: images/screenshot.png
 [iso1]: images/example_isometric_scene.png
 [iso2]: images/example_isometricscene2.png
 [iso_goal]: images/goal_visual_iso.jpg
-
 [panel1]: images/1.png
 [panel2]: images/2.png
 [panel3]: images/4.png
