@@ -55,30 +55,25 @@ What is GnomansLand?
 This project started as a simple exercise in the use of pygame and OpenAI to create reinforcement agents. But with time it became something else entirely. It grew into a fascinatingly organic (theoretically open-world) mixture of Minecraft, Age of empires (from the good old days), fallout shelter, and NetLogo. We are building a virtual experience for our Gnomes and watching them learn. They must learn or they will die out. Using concepts introduced in genetic algorithms and natural selection we hope to program this civilization to stay alive and even thrive in their post-apocalyptic survival society where they not only have to hunt and gather to stay alive, but must adapt to changing conditions and learn on the go.
 
 <!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About the project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
+- [Introduction](#introduction)
+- [An Outline of the Game](#an-outline-of-thegame)
+- [Ideas for the Future](#ideas-for-the-future)
+- [The Environment](#the-environment)
+- [We are looking for Contributors in the Following Areas](#we-are-looking-for-contributors-in-the-following-areas)
+- [Some ideas have already been shared, here are three examples:](#some-ideas-have-already-been-shared-here-are-three-examples)
+  - [Built With (Prerequisites)](#built-with-prerequisites)
+- [Getting Started](#getting-started)
+- [Usage Examples](#usage-examples)
+- [Our Development Roadmap](#our-development-roadmap)
+- [Observation Space Specs](#observation-space-specs)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contributors](#contributors)
+  - [Graham Waters ](#graham-waters-)
+  - [Nora Abuassaf ](#nora-abuassaf-)
+- [Contact](#contact)
+- [Acknowledgments](#acknowledgments)
+
 
 <!-- ABOUT THE PROJECT -->
 
@@ -97,6 +92,15 @@ The gameflow is divided into six phases, each with its own unique and novel chal
 ![Product Name Screen Shot][panel9]
 ![Product Name Screen Shot][panel10]
 ![Product Name Screen Shot][panel11]
+
+## Ideas for the Future
+To make the game immersive, players could be given the option to play as a gnome, or as a force entity. The "force entity" is a god-like creature that can interact with the environment by directing gnomes to tasks like Age of Empires or other god-mode RTS openworld games.
+
+## The Environment
+The space where the agents live should be generative in that it adapts as it learns from how the gnomes and players interact with it. So, the environment is an agent itself.
+*see Meta's work on the E3B Algorithm * [repo here](https://github.com/facebookresearch/e3b)
+*also see their paper on Exploration via Elliptical Episodic Bonuses * [paper here](https://arxiv.org/abs/2210.05805)
+
 
 ## We are looking for Contributors in the Following Areas
 
