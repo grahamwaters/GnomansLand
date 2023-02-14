@@ -52,7 +52,11 @@ Feel free to share this project on Twitter!
 ## Introduction
 
 What is GnomansLand?
+Gnomans Land is an MMORTS (Massively Multiplayer Online Real-Time Strategy) game that mixes all the best parts of Clash of Clans, Age of Empires (OG), Minecraft, Minedustry, and Stardew Valley. Without giving too much away, the minimum viable product can be summed up as a game where players build their own civilizations of reinforcement learning agents (gnomes) that they then train (oversee the training in god mode) to survive against the elements, disease, and predators. The game's objective is to build a robust population of trained gnomes, which can be drafted into an army to conquer an open-world space or develop new cities and expand their empire. The area they can travel in will contain the actual towns of other players at random intervals. Remember Stronghold Crusader 2? Similar to that. The game will have a Minecraft-like world and likely involve resource management, combat, and strategy elements.
+
+Some History on the idea
 This project started as a simple exercise in the use of pygame and OpenAI to create reinforcement agents. But with time it became something else entirely. It grew into a fascinatingly organic (theoretically open-world) mixture of Minecraft, Age of empires (from the good old days), fallout shelter, and NetLogo. We are building a virtual experience for our Gnomes and watching them learn. They must learn or they will die out. Using concepts introduced in genetic algorithms and natural selection we hope to program this civilization to stay alive and even thrive in their post-apocalyptic survival society where they not only have to hunt and gather to stay alive, but must adapt to changing conditions and learn on the go.
+
 
 <!-- TABLE OF CONTENTS -->
 - [Introduction](#introduction)
