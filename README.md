@@ -109,7 +109,6 @@ The space where the agents live should be generative in that it adapts as it lea
 ## We are looking for Contributors in the Following Areas
 
 - We are looking to build our game in Unity3d. If you are a Unity expert, or are familiar with using ML in Unity3d, then you have a place with us.
-
 - Genetic Algorithms are often complex. If you have experience coding these or other machine learning algorithms, then reach out, and we can find a task to assign to you.
 - Graph optimization
 - Agent Behavior modification through policy generation
