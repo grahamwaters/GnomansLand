@@ -58,25 +58,53 @@ Some History on the idea
 This project started as a simple exercise in the use of pygame and OpenAI to create reinforcement agents. But with time it became something else entirely. It grew into a fascinatingly organic (theoretically open-world) mixture of Minecraft, Age of empires (from the good old days), fallout shelter, and NetLogo. We are building a virtual experience for our Gnomes and watching them learn. They must learn or they will die out. Using concepts introduced in genetic algorithms and natural selection we hope to program this civilization to stay alive and even thrive in their post-apocalyptic survival society where they not only have to hunt and gather to stay alive, but must adapt to changing conditions and learn on the go.
 
 
+# Areas that you can help!
+
+<div align="center">
+  <!-- using option_panel_one for the first image -->
+  <a href="./documentation/world_building/sprites in the environment/">
+    <img src="./images/sprites.png" alt="Sprites and Environment" height="100">
+  </a>
+  <a href="./documentation/unity_development/unity_development.md">
+    <img src="./images/unity.png" alt="Unity" height="100">
+  </a>
+  <a href="./documentation/agent_development/agent_design/">
+    <img src="./images/agent_design.png" alt="Agent Design" height="100">
+  </a>
+  <a href="./documentation/agent_development/agent_backstory.md">
+    <img src="./images/story.png" alt="Agent Backstory" height="100">
+  </a>
+  <a href="./documentation/agent_development/battle_dynamics/">
+    <img src="./images/battle.png" alt="Battle Engineering" height="100">
+  </a>
+  <a href="./documentation/world_building/environment programming/">
+    <img src="./images/weather.png" alt="Environment Programming" height="100">
+  </a>
+  <a href="./documentation/world_building/worldbuilding.md">
+    <img src="./images/worldbuilding.png" alt="World Building" height="100">
+  </a>
+</div>
+
+
 <!-- TABLE OF CONTENTS -->
-- [Introduction](#introduction)
-- [An Outline of the Game](#an-outline-of-thegame)
-- [Ideas for the Future](#ideas-for-the-future)
-- [The Environment](#the-environment)
-- [We are looking for Contributors in the Following Areas](#we-are-looking-for-contributors-in-the-following-areas)
-- [Some ideas have already been shared, here are three examples:](#some-ideas-have-already-been-shared-here-are-three-examples)
-  - [Built With (Prerequisites)](#built-with-prerequisites)
-- [Getting Started](#getting-started)
-- [Usage Examples](#usage-examples)
-- [Our Development Roadmap](#our-development-roadmap)
-- [Observation Space Specs](#observation-space-specs)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contributors](#contributors)
-  - [Graham Waters ](#graham-waters-)
-  - [Nora Abuassaf ](#nora-abuassaf-)
-- [Contact](#contact)
-- [Acknowledgments](#acknowledgments)
+- [Areas that you can help!](#areas-that-you-can-help)
+  - [An Outline of the Game](#an-outline-of-thegame)
+  - [Ideas for the Future](#ideas-for-the-future)
+  - [The Environment](#the-environment)
+  - [We are looking for Contributors in the Following Areas](#we-are-looking-for-contributors-in-the-following-areas)
+  - [Some ideas have already been shared, here are three examples:](#some-ideas-have-already-been-shared-here-are-three-examples)
+    - [Built With (Prerequisites)](#built-with-prerequisites)
+  - [Getting Started](#getting-started)
+  - [Usage Examples](#usage-examples)
+  - [Our Development Roadmap](#our-development-roadmap)
+  - [Observation Space Specs](#observation-space-specs)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Contributors](#contributors)
+    - [Graham Waters ](#graham-waters-)
+    - [Nora Abuassaf ](#nora-abuassaf-)
+  - [Contact](#contact)
+  - [Acknowledgments](#acknowledgments)
 
 
 <!-- ABOUT THE PROJECT -->
@@ -285,3 +313,8 @@ If you have questions or concerns about the project, or just want to chat about 
 [panel9]: images/12.png
 [panel10]: images/16.png
 [panel11]: images/17.png
+[option_panel_one]: images/sprites.png
+[option_panel_two]: images/battle.png
+[option_panel_three]: images/weather.png
+[option_panel_four]: images/worldbuilding.png
+[option_panel_five]: images/unity.png

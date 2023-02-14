@@ -16,7 +16,7 @@ Gnomes have the following attributes in their profiles.
 5. An age (the gnomes live a maximum of 130 years and pass their acquired characteristics at half-value to their offspring. So if a gnome with a farming skill score of 1450 dies leaving two children, their children get + 725 farming XP when their parent passes.
 6. An element of randomness that makes the gnome occassionally behave in ways that are against the programming. This is simply to augment the robust nature of the RL Agent Policies, and the environment as well which also is learning from the Gnomes.
 7. They have a designation that is either True or False called: `in the order` which represents their position as **in Eve’s Protectorate** or not.
-8. Attributes that are trained or innate
+8. Attributes that are trained or innate.
     **Innate**:
     1. **A personal fortune score** - a value from 1 to 100 that determines how likely the gnome is to either win a fight they are in, find a resource, be undetected by enemies while away from the city, or locate a relic while exploring. Starts at a random number from 1 to 100.
     **Trained**:
