@@ -57,7 +57,7 @@ Gnomans Land is an MMORTS (Massively Multiplayer Online Real-Time Strategy) game
 Some History on the idea
 This project started as a simple exercise in the use of pygame and OpenAI to create reinforcement agents. But with time it became something else entirely. It grew into a fascinatingly organic (theoretically open-world) mixture of Minecraft, Age of empires (from the good old days), fallout shelter, and NetLogo. We are building a virtual experience for our Gnomes and watching them learn. They must learn or they will die out. Using concepts introduced in genetic algorithms and natural selection we hope to program this civilization to stay alive and even thrive in their post-apocalyptic survival society where they not only have to hunt and gather to stay alive, but must adapt to changing conditions and learn on the go.
 
-
+<!-- documentation/agent_development/agent_design -->
 # Areas that you can help!
 
 <div align="center">
