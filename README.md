@@ -51,12 +51,18 @@ Feel free to share this project on Twitter!
 
 ## Introduction
 
-What is GnomansLand?
-Gnomans Land is an MMORTS (Massively Multiplayer Online Real-Time Strategy) game that mixes all the best parts of Clash of Clans, Age of Empires (OG), Minecraft, Minedustry, and Stardew Valley. Without giving too much away, the minimum viable product can be summed up as a game where players build their own civilizations of reinforcement learning agents (gnomes) that they then train (oversee the training in god mode) to survive against the elements, disease, and predators. The game's objective is to build a robust population of trained gnomes, which can be drafted into an army to conquer an open-world space or develop new cities and expand their empire. The area they can travel in will contain the actual towns of other players at random intervals. Remember Stronghold Crusader 2? Similar to that. The game will have a Minecraft-like world and likely involve resource management, combat, and strategy elements.
+Gnomans Land is a highly ambitious MMORTS game with features that combine the best aspects of Clash of Clans, Age of Empires (OG), Minecraft, Minedustry, and Stardew Valley. As a game developer, you will have the opportunity to work with the most advanced tools to create a unique game world where players can build their own civilizations of reinforcement learning agents (gnomes). These gnomes can then be trained by players, who will be able to oversee the training process in god mode.
+
+One of the most exciting aspects of Gnomans Land is that players will have to train their gnomes to survive against the elements, disease, and predators, making this game an excellent showcase for the capabilities of machine learning technology. As a game developer, you will be responsible for implementing and testing these mechanics, as well as ensuring that they work seamlessly with other game elements.
+
+In Gnomans Land, players will have to build a robust population of trained gnomes, which can be drafted into an army to conquer an open-world space or develop new cities and expand their empire. To achieve this, the game will have a Minecraft-like world that will involve resource management, combat, and strategy elements. Your role as a developer will be to work with a variety of tools and techniques to create an immersive game world that will keep players engaged and coming back for more.
+
+Another exciting feature of Gnomans Land is that the area players can travel in will contain the actual towns of other players at random intervals, similar to Stronghold Crusader 2. This will require you to work closely with other members of the development team to ensure that the game world is seamless and that players can interact with each other in a fun and engaging way.
+
+Gnomans Land is an exciting MMORTS game that will provide plenty of opportunities for game developers to showcase their skills and create an immersive gaming experience for players. From machine learning technology to Minecraft-like worlds, there are plenty of exciting tools and aspects to work with in this game. If you are interested in working on a game that will be a showcase for the latest technology, then Gnomans Land is the perfect project for you.
 
 Some History on the idea
 This project started as a simple exercise in the use of pygame and OpenAI to create reinforcement agents. But with time it became something else entirely. It grew into a fascinatingly organic (theoretically open-world) mixture of Minecraft, Age of empires (from the good old days), fallout shelter, and NetLogo. We are building a virtual experience for our Gnomes and watching them learn. They must learn or they will die out. Using concepts introduced in genetic algorithms and natural selection we hope to program this civilization to stay alive and even thrive in their post-apocalyptic survival society where they not only have to hunt and gather to stay alive, but must adapt to changing conditions and learn on the go.
-
 
 # Areas that you can help!
 
@@ -85,8 +91,8 @@ This project started as a simple exercise in the use of pygame and OpenAI to cre
   </a>
 </div>
 
-
 <!-- TABLE OF CONTENTS -->
+
 - [Areas that you can help!](#areas-that-you-can-help)
   - [An Outline of the Game](#an-outline-of-thegame)
   - [Ideas for the Future](#ideas-for-the-future)
@@ -105,7 +111,6 @@ This project started as a simple exercise in the use of pygame and OpenAI to cre
     - [Nora Abuassaf ](#nora-abuassaf-)
   - [Contact](#contact)
   - [Acknowledgments](#acknowledgments)
-
 
 <!-- ABOUT THE PROJECT -->
 
@@ -126,13 +131,14 @@ The gameflow is divided into six phases, each with its own unique and novel chal
 ![Product Name Screen Shot][panel11]
 
 ## Ideas for the Future
+
 To make the game immersive, players could be given the option to play as a gnome, or as a force entity. The "force entity" is a god-like creature that can interact with the environment by directing gnomes to tasks like Age of Empires or other god-mode RTS openworld games.
 
 ## The Environment
-The space where the agents live should be generative in that it adapts as it learns from how the gnomes and players interact with it. So, the environment is an agent itself.
-*see Meta's work on the E3B Algorithm * [repo here](https://github.com/facebookresearch/e3b)
-*also see their paper on Exploration via Elliptical Episodic Bonuses * [paper here](https://arxiv.org/abs/2210.05805)
 
+The space where the agents live should be generative in that it adapts as it learns from how the gnomes and players interact with it. So, the environment is an agent itself.
+_see Meta's work on the E3B Algorithm _ [repo here](https://github.com/facebookresearch/e3b)
+_also see their paper on Exploration via Elliptical Episodic Bonuses _ [paper here](https://arxiv.org/abs/2210.05805)
 
 ## We are looking for Contributors in the Following Areas
 
