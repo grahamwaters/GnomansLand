@@ -291,6 +291,10 @@ If you have questions or concerns about the project, or just want to chat about 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=grahamwaters/GnomansLand&type=Date)](https://star-history.com/#grahamwaters/GnomansLand&Date)
+
 [contributors-shield]: https://img.shields.io/github/contributors/grahamwaters/GnomansLand.svg?style=for-the-badge
 [contributors-url]: https://github.com/grahamwaters/GnomansLand/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/grahamwaters/GnomansLand.svg?style=for-the-badge
