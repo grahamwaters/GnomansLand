@@ -15,7 +15,7 @@ py @ file:///home/conda/feedstock_root/build_artifacts/py_1636301881863/work
 pycodestyle @ file:///home/conda/feedstock_root/build_artifacts/pycodestyle_1633982426610/work
 pyflakes @ file:///home/conda/feedstock_root/build_artifacts/pyflakes_1633634815271/work
 pyparsing @ file:///home/conda/feedstock_root/build_artifacts/pyparsing_1652235407899/work
-pytest==7.1.2
+pytest==9.0.3
 tomli @ file:///home/conda/feedstock_root/build_artifacts/tomli_1644342247877/work
 typed-ast @ file:///Users/runner/miniforge3/conda-bld/typed-ast_1650218826575/work
 typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/typing_extensions_1650370875435/work
